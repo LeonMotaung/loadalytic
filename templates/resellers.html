@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Resellers - Loadalytic</title>
+    <link rel="icon" href="assets/images/header/favicon.svg">
+    <link rel="stylesheet" href="assets/css/aos.css">
+    <link rel="stylesheet" href="assets/css/animate.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/slick.css">
+    <link rel="stylesheet" href="assets/css/slick-theme.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/media-query.css">
+    <style>
+        /* Resellers Search and Filter Section */
+        .resellers-section {
+            padding: 80px 0;
+            background: #fdfdfd;
+        }
+        .resellers-container {
+            max-width: 1320px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        .search-filter-box {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(2, 144, 65, 0.15);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            margin-bottom: 50px;
+        }
+        .search-filter-box form {
+            display: flex;
+            width: 100%;
+            gap: 20px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .form-group-search {
+            flex: 2;
+            min-width: 280px;
+            position: relative;
+        }
+        .form-group-search input {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #eef2f5;
+            border-radius: 12px;
+            font-size: 16px;
+            font-family: 'Outfit', sans-serif;
+            color: #333;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+        }
+        .form-group-search input:focus {
+            border-color: #029041;
+            outline: none;
+            box-shadow: 0 0 10px rgba(2, 144, 65, 0.1);
+        }
+        .form-group-filter {
+            flex: 1;
+            min-width: 180px;
+        }
+        .form-group-filter select {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #eef2f5;
+            border-radius: 12px;
+            font-size: 16px;
+            font-family: 'Outfit', sans-serif;
+            color: #333;
+            background-color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+        }
+        .form-group-filter select:focus {
+            border-color: #029041;
+            outline: none;
+        }
+        .search-btn {
+            padding: 15px 35px;
+            background: #029041;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .search-btn:hover {
+            background: #00c853;
+            transform: translateY(-2px);
+        }
+
+        /* Resellers Grid */
+        .resellers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 30px;
+        }
+        .reseller-card {
+            background: white;
+            border-radius: 20px;
+            border: 1px solid #f0f0f0;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.02);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+        .reseller-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(2, 144, 65, 0.08);
+            border-color: rgba(2, 144, 65, 0.2);
+        }
+        .reseller-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        .reseller-logo {
+            width: 60px;
+            height: 60px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-weight: 800;
+            font-family: 'Outfit', sans-serif;
+        }
+        .reseller-rating {
+            text-align: right;
+        }
+        .reseller-rating-stars {
+            color: #ffb300;
+            font-size: 16px;
+        }
+        .reseller-reviews-count {
+            font-size: 12px;
+            color: #888;
+            margin-top: 2px;
+            font-family: 'Outfit', sans-serif;
+        }
+        .reseller-body h3 {
+            font-size: 22px;
+            font-weight: 700;
+            color: #111;
+            margin: 0 0 10px 0;
+            font-family: 'Outfit', sans-serif;
+        }
+        .energy-badge {
+            display: inline-block;
+            padding: 6px 12px;
+            background: rgba(2, 144, 65, 0.08);
+            color: #029041;
+            font-size: 13px;
+            font-weight: 600;
+            border-radius: 30px;
+            margin-bottom: 20px;
+            font-family: 'Outfit', sans-serif;
+        }
+        .reseller-plan-details {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            border-top: 1px solid #f5f5f5;
+            border-bottom: 1px solid #f5f5f5;
+            padding: 12px 0;
+            font-family: 'Outfit', sans-serif;
+        }
+        .plan-detail-item {
+            font-size: 14px;
+        }
+        .plan-detail-label {
+            color: #888;
+            margin-bottom: 4px;
+        }
+        .plan-detail-value {
+            font-weight: 600;
+            color: #333;
+        }
+        .reseller-rate-box {
+            margin-bottom: 25px;
+            display: flex;
+            align-items: baseline;
+            gap: 5px;
+            font-family: 'Outfit', sans-serif;
+        }
+        .reseller-rate-value {
+            font-size: 32px;
+            font-weight: 800;
+            color: #029041;
+        }
+        .reseller-rate-unit {
+            color: #888;
+            font-size: 14px;
+        }
+        .reseller-features {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 30px 0;
+            font-family: 'Outfit', sans-serif;
+        }
+        .reseller-features li {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 10px;
+            padding-left: 24px;
+            position: relative;
+        }
+        .reseller-features li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #029041;
+            font-weight: bold;
+        }
+        .reseller-footer {
+            display: flex;
+            gap: 15px;
+            margin-top: auto;
+        }
+        .reseller-btn {
+            flex: 1;
+            padding: 14px 10px;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-family: 'Outfit', sans-serif;
+            box-sizing: border-box;
+        }
+        .reseller-btn-outline {
+            border: 2px solid #eef2f5;
+            color: #555;
+            background: transparent;
+        }
+        .reseller-btn-outline:hover {
+            border-color: #029041;
+            color: #029041;
+        }
+        .reseller-btn-primary {
+            background: #029041;
+            color: white;
+        }
+        .reseller-btn-primary:hover {
+            background: #00c853;
+            box-shadow: 0 8px 20px rgba(2, 144, 65, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <!-- preloader section -->
+    <div id="preloader">
+        <div class="load">
+            <hr>
+            <hr>
+            <hr>
+            <hr>
+        </div>
+    </div>
+    <div class="menu-overlay"></div>
+    
+    <!-- header & hero section -->
+    <div class="common-page-section">
+        <!-- header section -->
+        <header class="top-navbar">
+            <a href="index.html">
+                <img src="assets/images/header/header-logo.svg" alt="header-logo" height="80" width="193" class="header-logo">
+            </a>
+            <a href="javascript:void(0);" class="menu-toggle">
+                <img src="assets/images/header/menu-toggle.svg" alt="menu-toggle" height="28" width="28">
+            </a>
+            <div class="mobile-nav">
+                <div class="mobile-nav-top-content">
+                    <div class="menu-toggle-logo-close-icon">
+                        <a href="index.html">
+                            <img src="assets/images/header/header-logo.svg" alt="header-logo" height="80" width="193" class="header-logo">
+                        </a>
+                        <img src="assets/images/header/close-icon.svg" alt="close-icon" class="close-icon" height="24" width="24">
+                    </div>
+                    <ul class="menu">
+                        <li class="dropdown">
+                            <a href="index.html">
+                                Home
+                            </a>
+                        </li>
+                        <li class="dots-circle-li">
+                            <div class="dots-circle"></div>
+                        </li>
+                        <li class="dropdown">
+                            <a href="javascript:void(0);">
+                                Pages
+                                <img src="assets/images/header/arrow-icon.svg" alt="arrow-icon" height="24" width="24">
+                            </a>
+                            <ul class="submenu">
+                                <li><a href="about.html">About Us</a></li>
+                                <li><a href="gallery.html">Gallery</a></li>
+                                <li><a href="our-team.html">Our Team</a></li>
+                                <li><a href="team-details.html">Team Details</a></li>
+                                <li><a href="careers.html">Careers</a></li>
+                                <li><a href="pricing-plan.html">Pricing Plan</a></li>
+                                <li><a href="our-clients.html">Our Clients</a></li>
+                                <li><a href="testimonial.html">Testimonials</a></li>
+                                <li><a href="faq.html">FAQs</a></li>
+                                <li><a href="get-your-quote.html">Get Your Quote</a></li>
+                                <li><a href="404-error.html">404 Error</a></li>
+                                <li><a href="coming-soon.html">Coming Soon</a></li>
+                            </ul>
+                        </li>
+                        <li class="dots-circle-li">
+                            <div class="dots-circle"></div>
+                        </li>
+                        <li class="dropdown">
+                            <a href="javascript:void(0);">
+                                Services
+                                <img src="assets/images/header/arrow-icon.svg" alt="arrow-icon" height="24" width="24">
+                            </a>
+                            <ul class="submenu">
+                                <li class="dropdown-sub">
+                                    <a href="javascript:void(0);" class="dropdown-sub-link">
+                                        Service
+                                        <img src="assets/images/header/arrow-icon.svg" alt="arrow-icon" class="submenu-arrow" height="24" width="24">
+                                    </a>
+                                    <ul class="submenu submenu-right">
+                                        <li><a href="services1.html">Service 1</a></li>
+                                        <li><a href="services2.html">Service 2</a></li>
+                                        <li><a href="services3.html">Service 3</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown-sub">
+                                    <a href="javascript:void(0);" class="dropdown-sub-link">
+                                        Single Service
+                                        <img src="assets/images/header/arrow-icon.svg" alt="arrow-icon" class="submenu-arrow" height="24" width="24">
+                                    </a>
+                                    <ul class="submenu submenu-right">
+                                        <li><a href="single-service.html">Single Service</a></li>
+                                        <li><a href="residence-panels.html">Residence Panels</a></li>
+                                        <li><a href="solar-farms.html">Solar Farms</a></li>
+                                        <li><a href="industrial-panels.html">Industrial Panels</a></li>
+                                        <li><a href="solar-power-system.html">Solar Power System</a></li>
+                                        <li><a href="solar-monitoring.html">Solar Monitoring</a></li>
+                                        <li><a href="charging-station-panels.html">Charging Station</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dots-circle-li">
+                            <div class="dots-circle"></div>
+                        </li>
+                        <li class="dropdown">
+                            <a href="javascript:void(0);">
+                                Projects
+                                <img src="assets/images/header/arrow-icon.svg" alt="arrow-icon" height="24" width="24">
+                            </a>
+                            <ul class="submenu">
+                                <li class="dropdown-sub">
+                                    <a href="javascript:void(0);" class="dropdown-sub-link">
+                                        Project
+                                        <img src="assets/images/header/arrow-icon.svg" alt="arrow-icon" class="submenu-arrow" height="24" width="24">
+                                    </a>
+                                    <ul class="submenu submenu-right">
+                                        <li><a href="projects1.html">Project 1</a></li>
+                                        <li><a href="projects2.html">Project 2</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown-sub">
+                                    <a href="javascript:void(0);" class="dropdown-sub-link">
+                                        Single Project
+                                        <img src="assets/images/header/arrow-icon.svg" alt="arrow-icon" class="submenu-arrow" height="24" width="24">
+                                    </a>
+                                    <ul class="submenu submenu-right">
+                                        <li><a href="single-project1.html">Single Project 1</a></li>
+                                        <li><a href="single-project2.html">Single Project 2</a></li>
+                                        <li><a href="single-project3.html">Single Project 3</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dots-circle-li">
+                            <div class="dots-circle"></div>
+                        </li>
+                        <li class="dropdown">
+                            <a href="resellers.html">
+                                Find Resellers
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="javascript:void(0);">
+                                Dashboards
+                                <img src="assets/images/header/arrow-icon.svg" alt="arrow-icon" height="24" width="24">
+                            </a>
+                            <ul class="submenu">
+                                <li><a href="dashboard.html">Operations Dashboard</a></li>
+                                <li><a href="dashboard-client.html">Client Dashboard</a></li>
+                            </ul>
+                        </li>
+                        <li class="dots-circle-li">
+                            <div class="dots-circle"></div>
+                        </li>
+                        <li class="dropdown">
+                            <a href="blog1.html">
+                                Blog
+                            </a>
+                        </li>
+                        <li class="dots-circle-li">
+                            <div class="dots-circle"></div>
+                        </li>
+                        <li class="dropdown">
+                            <a href="contact.html">
+                                Contact
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="mobile-nav-bottom-content">
+                    <a href="get-your-quote.html" class="get-a-quote-btn responsive-get-a-quote-btn get-a-quote-btn-bg"><span>Get A Quote</span></a>
+                </div>
+            </div>
+            <a href="get-your-quote.html" class="get-a-quote-btn desktop-get-a-quote-btn get-a-quote-btn-bg"><span>Get A Quote</span></a>
+        </header>
+        
+        <!-- common page section -->
+        <div class="common-page-wrapper">
+            <img src="assets/images/about/about-page-left-img.png" alt="about-page-left-img" height="335" width="615" class="about-page-left-img">
+            <img src="assets/images/about/about-page-right-img.png" alt="about-page-right-img" height="380" width="475" class="about-page-right-img">
+            <div class="common-page-container">
+                <h1>Find Resellers</h1>
+                <div class="common-page-links">
+                    <a href="index.html" class="common-page-home-link">Home</a>
+                    <div class="common-page-hr-line"></div>
+                    <a href="resellers.html" class="common-page-active-link">Electricity Resellers</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- main dynamic search and list section -->
+    <section class="resellers-section">
+        <div class="resellers-container">
+            <!-- Search and Filter Box -->
+            <div class="search-filter-box" data-aos="fade-up" data-aos-duration="800">
+                <form action="/resellers.html" method="GET">
+                    <div class="form-group-search">
+                        <input type="text" name="q" placeholder="Search by reseller name or feature..." value="{{ search_query }}">
+                    </div>
+                    <div class="form-group-filter">
+                        <select name="plan_type" onchange="this.form.submit()">
+                            <option value="All" {% if plan_type == 'All' %}selected{% endif %}>All Plan Types</option>
+                            <option value="Fixed Rate" {% if plan_type == 'Fixed Rate' %}selected{% endif %}>Fixed Rate</option>
+                            <option value="Variable Rate" {% if plan_type == 'Variable Rate' %}selected{% endif %}>Variable Rate</option>
+                        </select>
+                    </div>
+                    <div class="form-group-filter">
+                        <select name="energy_type" onchange="this.form.submit()">
+                            <option value="All" {% if energy_type == 'All' %}selected{% endif %}>All Energy Types</option>
+                            <option value="Renewable" {% if energy_type == 'Renewable' %}selected{% endif %}>Renewable Energy</option>
+                            <option value="Mix" {% if energy_type == 'Mix' %}selected{% endif %}>Mixed Energy</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="search-btn">Search</button>
+                </form>
+            </div>
+
+            <!-- Resellers Grid -->
+            <div class="resellers-grid" data-aos="fade-up" data-aos-duration="1000">
+                {% for reseller in resellers %}
+                <div class="reseller-card">
+                    <div class="reseller-header">
+                        <div class="reseller-logo" style="background-color: {{ reseller.logo_color }};">
+                            {{ reseller.name[0] }}
+                        </div>
+                        <div class="reseller-rating">
+                            <div class="reseller-rating-stars">★★★★★</div>
+                            <div class="reseller-reviews-count">{{ reseller.rating }} ({{ reseller.reviews }} reviews)</div>
+                        </div>
+                    </div>
+                    <div class="reseller-body">
+                        <h3>{{ reseller.name }}</h3>
+                        <span class="energy-badge">{{ reseller.energy_type }}</span>
+                        
+                        <div class="reseller-plan-details">
+                            <div class="plan-detail-item">
+                                <div class="plan-detail-label">Plan Type</div>
+                                <div class="plan-detail-value">{{ reseller.plan_type }}</div>
+                            </div>
+                            <div class="plan-detail-item" style="text-align: right;">
+                                <div class="plan-detail-label">Term</div>
+                                <div class="plan-detail-value">{{ reseller.contract_term }}</div>
+                            </div>
+                        </div>
+
+                        <div class="reseller-rate-box">
+                            <span class="reseller-rate-value">${{ "%.3f"|format(reseller.rate) }}</span>
+                            <span class="reseller-rate-unit">/ kWh</span>
+                        </div>
+
+                        <ul class="reseller-features">
+                            {% for feature in reseller.features %}
+                            <li>{{ feature }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="reseller-footer">
+                        <a href="tel:{{ reseller.phone }}" class="reseller-btn reseller-btn-outline">Call: {{ reseller.phone }}</a>
+                        <a href="{{ reseller.website }}" target="_blank" class="reseller-btn reseller-btn-primary">Select Plan</a>
+                    </div>
+                </div>
+                {% else %}
+                <div style="grid-column: 1 / -1; text-align: center; padding: 80px 20px; background: white; border-radius: 20px; border: 1px dashed #ccc;">
+                    <h3 style="font-family: 'Outfit', sans-serif; color: #888; margin-bottom: 10px;">No resellers found matching your criteria.</h3>
+                    <p style="font-family: 'Outfit', sans-serif; color: #aaa;">Try adjusting your search query or filters.</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- footer section -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-top-container">
+                <div class="footer-top-left-container">
+                    <a href="index.html" class="footer-logo">
+                        <img src="assets/images/footer/footer-logo.svg" alt="footer-logo" height="80" width="193">
+                    </a>
+                    <p>We are a Certified B Corp, which means we are committed to using our business as a force for good. We were recently recognized as a B Corp best.</p>
+                    <div class="footer-social-icons">
+                        <a href="https://www.facebook.com/" target="_blank">
+                            <img src="assets/images/footer/facebook.svg" alt="facebook" height="24" width="24">
+                        </a>
+                        <a href="https://x.com" target="_blank">
+                            <img src="assets/images/footer/x.svg" alt="x" height="24" width="24">
+                        </a>
+                        <a href="https://www.instagram.com" target="_blank">
+                            <img src="assets/images/footer/instagram.svg" alt="instagram" height="24" width="24">
+                        </a>
+                        <a href="https://www.whatsapp.com" target="_blank">
+                            <img src="assets/images/footer/whatsapp.svg" alt="whatsapp" height="24" width="24">
+                        </a>
+                        <a href="https://www.youtube.com" target="_blank">
+                            <img src="assets/images/footer/youtube.svg" alt="youtube" height="24" width="24">
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-top-right-container">
+                    <div class="contact-home-rakshak-solar">
+                        <h3>Contact Loadalytic</h3>
+                        <div class="contact-home-rakshak-solar-container">
+                            <div class="contact-home-rakshak-solar-content">
+                                <a href="javascript:void(0);" class="contact-home-rakshak-solar-icon">
+                                    <img src="assets/images/footer/location.svg" alt="location" height="24" width="24">
+                                </a>
+                                <a href="javascript:void(0);" class="contact-home-rakshak-solar-details">3651 Princeton St. NE Albuquerque, NM 86205, Mexico</a>
+                            </div>
+                            <div class="contact-home-rakshak-solar-content">
+                                <a href="tel:7861099999" class="contact-home-rakshak-solar-icon">
+                                    <img src="assets/images/footer/phone.svg" alt="phone" height="24" width="24">
+                                </a>
+                                <a href="tel:7861099999" class="contact-home-rakshak-solar-details">24/7 Support: (786) 109-9999</a>
+                            </div>
+                            <div class="contact-home-rakshak-solar-content">
+                                <a href="mailto:help@loadalytic.com" class="contact-home-rakshak-solar-icon">
+                                    <img src="assets/images/footer/email.svg" alt="email" height="24" width="24">
+                                </a>
+                                <a href="mailto:help@loadalytic.com" class="contact-home-rakshak-solar-details">Mail: help@loadalytic.com</a>
+                            </div>
+                            <div class="contact-home-rakshak-solar-content">
+                                <a href="javascript:void(0);" class="contact-home-rakshak-solar-icon">
+                                    <img src="assets/images/footer/clock.svg" alt="clock" height="24" width="24">
+                                </a>
+                                <a href="javascript:void(0);" class="contact-home-rakshak-solar-details">Open hour: 08:00 AM - 05:00 PM</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="quick-links">
+                        <h3>Quick Links</h3>
+                        <div class="quick-links-container">
+                            <div class="quick-links-left-container">
+                                <div class="quick-links-name">
+                                    <a href="about.html">></a>
+                                    <a href="about.html">About Us</a>
+                                </div>
+                                <div class="quick-links-name">
+                                    <a href="residence-panels.html">></a>
+                                    <a href="residence-panels.html">Residence Solar</a>
+                                </div>
+                                <div class="quick-links-name">
+                                    <a href="solar-farms.html">></a>
+                                    <a href="solar-farms.html">Solar Farms</a>
+                                </div>
+                                <div class="quick-links-name">
+                                    <a href="industrial-panels.html">></a>
+                                    <a href="industrial-panels.html">Industrial Solar</a>
+                                </div>
+                                <div class="quick-links-name">
+                                    <a href="charging-station-panels.html">></a>
+                                    <a href="charging-station-panels.html">Charging Station</a>
+                                </div>
+                            </div>
+                            <div class="quick-links-right-container">
+                                <div class="quick-links-name">
+                                    <a href="projects1.html">></a>
+                                    <a href="projects1.html">Projects</a>
+                                </div>
+                                <div class="quick-links-name">
+                                    <a href="blog1.html">></a>
+                                    <a href="blog1.html">Latest News</a>
+                                </div>
+                                <div class="quick-links-name">
+                                    <a href="testimonial.html">></a>
+                                    <a href="testimonial.html">Testimonials</a>
+                                </div>
+                                <div class="quick-links-name">
+                                    <a href="faq.html">></a>
+                                    <a href="faq.html">FAQs</a>
+                                </div>
+                                <div class="quick-links-name">
+                                    <a href="contact.html">></a>
+                                    <a href="contact.html">Contact Us</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom-container">
+                <div class="footer-hr-line"></div>
+                <div class="footer-bottom-content">
+                    <p>Copyright © Loadalytic. Love from <a href="https://1.envato.market/website-portfolio" target="_blank">The_Krishna.</a></p>
+                    <p><a href="about.html">Privacy Policy</a> | <a href="about.html">Terms of use</a> | <a href="about.html">Sitemap</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- custom cursor section -->
+    <div class="cursor"></div>
+    <!-- scroll to top section -->
+    <button class="scroll-to-top-button">
+        <img src="assets/images/scroll-to-top/arrow-icon.svg" alt="arrow-icon" height="24" width="24">
+    </button>
+    <script src="assets/js/jquery-3.7.1.min.js"></script>
+    <script src="assets/js/aos.js"></script>
+    <script src="assets/js/smooth-scrolling.js"></script>
+    <script src="assets/js/slick.min.js"></script>
+    <script src="assets/js/script.js"></script>
+</body>
+</html>

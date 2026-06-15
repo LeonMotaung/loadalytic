@@ -1,0 +1,4750 @@
+/*------------------------------------------------------------------
+Project: Home Rakshak Solar Website
+Author: -      
+Primary use: - To Provide Solar System
+-------------------------------------------------------------------*/
+/*----------------Table of contents Start---------------------------
+1. Default CSS
+2. Preloader CSS
+3. Header CSS   
+4. Hero CSS
+5. Hero-2 CSS
+6. Hero-3 CSS
+7. Hero-4 CSS
+8. About CSS
+9. Clean Energy CSS
+10. Service Solutions CSS
+11. Solar Benefits CSS
+12. Counter CSS
+13. How It Works CSS
+14. Single Project CSS
+15. Testimonials CSS
+16. Our Expert CSS
+17. Free Installation CSS
+18. Latest News CSS
+19. Footer CSS
+20. About Common Page CSS
+21. About Page CSS 
+22. About Why Choose Us CSS
+23. About Our Solutions CSS
+24. Gallery CSS
+25. Team Details CSS
+26. Careers CSS
+27. Careers Page Clean Energy CSS
+28. Pricing Plan CSS
+29. Our Clients CSS
+30. Testimonials Page CSS
+31. FAQ CSS
+32. FAQ Testimonials CSS
+33. Get A Quote CSS
+34. Error CSS
+35. Coming Soon CSS
+36. Service-1 Page Service Solutions CSS
+37. Service-2 Page Service Solutions CSS
+38. Service-3 Page Service Solutions CSS
+39. Services Page Why Choose Us CSS
+40. Single Service CSS
+41. Residence Panels CSS
+42. Projects-1 CSS
+43. Projects-2 CSS
+44. Single Projects-1 CSS
+45. Single Projects-2 CSS
+46. Portfolio CSS
+47. Portfolio Details CSS
+48. Blog1 CSS
+49. Blog2 CSS
+50. Single Blog CSS
+51. Single Blog Latest News CSS
+52. Single Blog3 CSS
+53. Contact CSS
+54. Google Map CSS
+55. Custom Cursor CSS
+56. Scroll To Top CSS
+---------Table of contents End-----------------------------------*/
+/*------------------------ [Color codes] ------------------------                    
+Background: #F5F6F7, #000000
+Content: #FFFFFF, #00D061, #000000, #222222, #A8A9AD
+-------------------------------------------------------------------*/
+/************************ 1. Default CSS ***************************/
+@font-face {
+    font-family: 'Outfit', sans-serif;
+    src: url('../fonts/Outfit-Regular.ttf');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Outfit', sans-serif;
+    src: url('../fonts/Outfit-Medium.ttf');
+    font-weight: 500;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Outfit', sans-serif;
+    src: url('../fonts/Outfit-SemiBold.ttf');
+    font-weight: 600;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Outfit', sans-serif;
+    src: url('../fonts/Outfit-Bold.ttf');
+    font-weight: 700;
+    font-style: normal;
+}
+*,
+::before,
+::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    font-family: 'Outfit', sans-serif;
+}
+body,
+html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    font-family: 'Outfit', sans-serif;
+}
+img {
+    max-width: 100%;
+    height: auto;
+}
+::selection {
+    background-color: rgba(0, 208, 97, 1);
+    color: #FFF;
+}
+::-webkit-scrollbar {
+    width: 4px;
+}
+::-webkit-scrollbar-track {
+    background: rgb(240, 230, 230);
+}
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 208, 97, 1);
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 208, 97, 1);
+}
+html {
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+a {
+    text-decoration: none;
+}
+h2{
+    color: rgba(0, 0, 0, 1);
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 64px;
+}
+.common-title{
+    color: rgba(0, 208, 97, 1);
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+.br-30{
+    border-radius: 30px;
+}
+.br-40{
+    border-radius: 40px;
+}
+.br-50{
+    border-radius: 50%;
+}
+/************************ 2. Preloader CSS ***************************/
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #FFF;
+    z-index: 999999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.5s ease;
+}
+.load {
+    position: relative;
+    width: 60px;
+    height: 60px;
+}
+.load hr {
+    border: 0;
+    margin: 0;
+    width: 50%;
+    height: 50%;
+    position: absolute;
+    border-radius: 50%;
+    animation: spin 2.2s ease infinite;
+}
+.load :first-child {
+    background: #00ba72;
+    animation-delay: -1.5s;
+}
+.load :nth-child(2) {
+    background: #00ba72;
+    animation-delay: -1s;
+}
+.load :nth-child(3) {
+    background: #00ba72;
+    animation-delay: -0.5s;
+}
+.load :last-child {
+    background: #00ba72;
+}
+@keyframes spin {
+    0%,
+    100% {
+        transform: translate(0);
+    }
+    25% {
+        transform: translate(240%);
+    }
+    50% {
+        transform: translate(240%, 240%);
+    }
+    75% {
+        transform: translate(0, 240%);
+    }
+}
+/************************ 3. Header CSS ***************************/
+.top-navbar.sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    padding: 10px 40px;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(6px);
+    transition: all 0.4s ease-in-out;
+}
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 40px 0 40px;
+}
+.menu-toggle {
+    width: 50px;
+    height: 50px;
+    background-color: rgba(0, 208, 97, 1);
+    border-radius: 100%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+.mobile-nav {
+    display: flex;
+    align-items: center;
+}
+.menu-toggle-logo-close-icon {
+    display: none;
+}
+.menu {
+    display: flex;
+    align-items: center;
+}
+.dropdown {
+    position: relative;
+}
+.dropdown::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background: transparent;
+    pointer-events: none;
+}
+.dropdown a {
+    color: rgba(255, 255, 255, 1);
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: all 0.3s ease-in-out;
+}
+.dropdown a img {
+    transition: all 0.3s ease-in-out;
+}
+.dropdown a:hover, 
+.active-link > a, 
+.active-mid > a{
+    color: #00D061 !important;
+}
+.dropdown a:hover img, 
+.active-link > a img, 
+.active-mid > a img{
+    filter: brightness(0) saturate(100%) invert(50%) sepia(84%) saturate(793%) hue-rotate(105deg) brightness(97%) contrast(101%);
+}
+.submenu {
+    position: absolute;
+    top: 150%;
+    left: 0;
+    background-color: #FFF;
+    border-radius: 2px;
+    width: 200px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    border-top: 4px solid rgba(0, 208, 97, 1);
+    border-radius: 10px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-20px);
+    transition: all 0.3s ease-in-out;
+}
+.dropdown:hover>.submenu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+.submenu li {
+    padding: 8px 12px;
+    transition: all 0.3s ease-in-out;
+}
+.submenu li:hover > a {
+    transform: translateX(6px);
+}
+.submenu li a {
+    color: #000;
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 24px;
+    display: block;
+    width: 100%;
+}
+.dropdown-sub {
+    position: relative;
+}
+.dropdown-sub .dropdown-sub-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.submenu-arrow {
+    filter: brightness(0) saturate(100%) invert(0%) sepia(94%) saturate(24%) hue-rotate(94deg) brightness(94%) contrast(98%);
+    transform: rotate(0deg);
+    transition: 0.3s ease-in-out;
+}
+.submenu-right {
+    position: absolute;
+    top: -10%;
+    left: 100%;
+    background-color: #FFF;
+    width: 200px;
+    transform: translateX(20px);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease-in-out;
+}
+.dropdown-sub:hover .submenu-right {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+.submenu-right li {
+    background: #FFF;
+    border-radius: 10px;
+}
+.dots-circle {
+    width: 8px;
+    height: 8px;
+    background: rgba(0, 208, 97, 1);
+    border-radius: 100%;
+    margin: 0 30px;
+}
+.mobile-nav-bottom-content {
+    display: none;
+}
+.get-a-quote-btn {
+    position: relative;
+    overflow: hidden;
+    border-radius: 30px;
+    background: #000;
+    width: 161px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 1);
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 24px;
+    text-decoration: none;
+    border: none;
+    outline: none;
+}
+.get-a-quote-btn span {
+    position: relative;
+    z-index: 5;
+}
+.get-a-quote-btn::before,
+.get-a-quote-btn::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 50%;
+    background: rgba(0, 208, 97, 1);
+    transition: 0.3s ease;
+}
+.get-a-quote-btn::after {
+    right: 0;
+}
+.get-a-quote-btn::before {
+    left: 0;
+}
+.get-a-quote-btn:hover::before,
+.get-a-quote-btn:hover::after {
+    width: 0%;
+    background: #000;
+}
+.get-a-quote-btn-bg{
+    background: #FFF;
+}
+.get-a-quote-btn-bg:hover{
+    background: #FFF;             
+    color: rgba(0, 208, 97, 1);  
+}
+.get-a-quote-btn-bg:hover::before,
+.get-a-quote-btn-bg:hover::after{
+    background: rgba(0, 208, 97, 1);
+}
+.menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+    z-index: 9998;
+}
+.menu-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+/************************ 4. Hero-1 CSS ***************************/
+.hero-slider-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+}
+.slide1{ 
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../images/hero/hero-background-image.jpg');
+}
+.slide2 {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('../images/hero/hero-background-image2.jpg');
+}
+.slide3 {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('../images/hero/hero-background-image3.jpg');
+}
+.hero-slide {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+.hero-container {
+    max-width: 1320px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 15px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.hero-container-para1 {
+    color: rgba(255, 255, 255, 1);
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: 2px;
+    text-align: center;
+    text-transform: uppercase;
+}
+.hero-container h1, .hero-slide-content h1 , .hero-container4 h1, .hero-container2 h1{
+    color: rgba(255, 255, 255, 1);
+    font-size: 80px;
+    font-weight: 700;
+    line-height: 100px;
+    text-align: center;
+    padding: 10px 0 20px 0;
+}
+.hero-container-para2 {
+    max-width: 850px;
+    width: 100%;
+    margin: 0 auto;
+    color: rgba(255, 255, 255, 1);
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 36px;
+    text-align: center;
+}
+.hero-container-button-video {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 35px;
+    padding: 60px 0 10px 0;
+}
+.our-services-btn {
+    width: 183px;
+    height: 64px;
+}
+.hero-container-video-btn {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.video-ring {
+    position: relative;
+    height: 64px;
+    width: 64px;
+    border: 2px solid #FFF;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.3s ease-in-out;
+}
+.video-ring::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 82px;  
+    height: 82px;
+    border: 2px solid rgba(255, 255, 255, 0.2); 
+    border-radius: 50%;
+    transition: all 0.3s ease-in-out;
+    animation: videoPulse 3s ease-in-out infinite;
+}
+@keyframes videoPulse {
+    0% {
+        box-shadow:
+            0 0 0 0 rgba(255, 255, 255, 0.6),
+            0 0 0 0 rgba(255, 255, 255, 0.35);
+    }
+    40% {
+        box-shadow:
+            0 0 0 22px rgba(255, 255, 255, 0),
+            0 0 0 0 rgba(255, 255, 255, 0.3);
+    }
+    80% {
+        box-shadow:
+            0 0 0 22px rgba(255, 255, 255, 0),
+            0 0 0 38px rgba(255, 255, 255, 0);
+    }
+    100% {
+        box-shadow:
+            0 0 0 0 rgba(255, 255, 255, 0),
+            0 0 0 38px rgba(255, 255, 255, 0);
+    }
+}
+.video-ring:hover {
+    border: 2px solid rgba(105, 204, 80, 0.87);
+}
+.video-ring img {
+    transition: all 0.3s ease-in-out;
+}
+.video-ring:hover img {
+    filter: brightness(0) saturate(100%) invert(66%) sepia(62%) saturate(4836%) hue-rotate(111deg) brightness(101%) contrast(103%);
+}
+.hero-container-video-btn p {
+    color: rgba(255, 255, 255, 1);
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 24px;
+    transition: all 0.3s ease-in-out;
+}
+.video-ring:hover+p {
+    color: rgba(0, 208, 97, 1);
+}
+.video-popup{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 10001;
+}
+.video-popup.active{
+    display: flex;
+}
+#popupVideo{
+    width: 100%;
+    border-radius: 10px;
+}
+.video-popup-content {
+    position: relative;
+    width: 80%;
+    max-width: 800px;
+}
+.video-popup-close {
+    position: absolute;
+    top: -40px;      
+    right: -15px;   
+    font-size: 36px;
+    color: #FFF;
+    cursor: pointer;
+    z-index: 1000;  
+    transition: all 0.3s ease-in-out;
+}
+/************************ 5. Hero-2 CSS ***************************/
+.hero-slider-container2 {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+.bg-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+.video-dark-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 2;
+}
+.hero-slider-wrapper2 {
+    position: relative;
+    height: 100vh;
+    z-index: 3;
+}
+.hero-slide2 {
+    position: relative;
+    height: 100vh;
+}
+.hero-container2 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 1320px;
+    width: 100%;
+    padding: 0 15px;
+    text-align: center;
+}
+.hero-container2 h1,
+.hero-container2 p,
+.hero-container2 .hero-container-button-video {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
+}
+.hero-slide2.slick-active h1,
+.hero-slide2.slick-active p,
+.hero-slide2.slick-active .hero-container-button-video {
+    opacity: 1;
+    transform: translateY(0);
+}
+/************************ 6. Hero-3 CSS ***************************/
+.hero-slider-container{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background: linear-gradient(120deg, #0a0a0a, #0f2f1f, #0a0a0a);
+    background-size: 300% 300%;
+    animation: gradientMove 8s ease-in-out infinite;
+}
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+.hero-bg-bubbles {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+.hero-bg-bubbles span {
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    background: rgba(0, 255, 120, 0.08);
+    border-radius: 50%;
+    filter: blur(40px);
+    animation: floatBubble 10s ease-in-out infinite;
+}
+.hero-bg-bubbles span:nth-child(1) {
+    top: 20%;
+    left: 10%;
+    animation-duration: 14s;
+}
+.hero-bg-bubbles span:nth-child(2) {
+    top: 60%;
+    left: 25%;
+    width: 240px;
+    height: 240px;
+    animation-duration: 18s;
+}
+.hero-bg-bubbles span:nth-child(3) {
+    top: 30%;
+    right: 15%;
+    width: 200px;
+    height: 200px;
+    animation-duration: 16s;
+}
+.hero-bg-bubbles span:nth-child(4) {
+    bottom: 10%;
+    right: 5%;
+    width: 280px;
+    height: 280px;
+    animation-duration: 20s;
+}
+.hero-bg-bubbles span:nth-child(5) {
+    top: 15%;
+    left: 45%;
+    width: 140px;
+    height: 140px;
+    animation-duration: 22s;
+}
+.hero-bg-bubbles span:nth-child(6) {
+    bottom: 25%;
+    left: 5%;
+    width: 120px;
+    height: 120px;
+    animation-duration: 26s;
+}
+.hero-bg-bubbles span:nth-child(7) {
+    top: 75%;
+    right: 30%;
+    width: 160px;
+    height: 160px;
+    animation-duration: 24s;
+}
+.hero-bg-bubbles span:nth-child(8) {
+    top: 45%;
+    right: 45%;
+    width: 100px;
+    height: 100px;
+    animation-duration: 30s;
+}
+@keyframes floatBubble {
+    0%   { transform: translate(0, 0); }
+    50%  { transform: translate(20px, -40px); }
+    100% { transform: translate(0, 0); }
+}
+/************************ 7. Hero-4 CSS ***************************/
+.hero-slider-wrapper4 {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+}
+.slide4::after,
+.slide6::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1;
+}
+.slide5 {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('../images/hero/hero-4-img1.jpg');
+}
+.hero-slide4 {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+.hero-bg-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+}
+.hero-container4{
+    max-width: 1320px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 15px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+}
+/************************ 8. About CSS ***************************/
+.about-container {
+    max-width: 1320px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 100px 15px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 30px;
+}
+.about-left-container {
+    max-width: calc(100% - 660px);
+    width: 100%;
+}
+.about-left-container h2 {
+    padding: 10px 0 30px 0;
+}
+.about-left-container .about-left-container-para2 {
+    color: rgba(34, 34, 34, 1);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 30px;
+}
+.about-list {
+    padding: 30px 0 60px 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+.about-list li {
+    color: rgba(0, 0, 0, 1);
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 24px;
+    position: relative;
+    padding-left: 34px;
+}
+.about-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 24px;
+    height: 24px;
+    background-image: url('../images/about/about-list.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.about-us-btn-container {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+.about-us-btn{
+    width: 155px;
+    height: 64px;
+}
+.need-help-now-btn-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 2px solid rgba(0, 0, 0, 1);
+    border-radius: 32px;
+    background: rgba(255, 255, 255, 1);
+    width: 248px;
+    height: 64px;
+    padding-left: 6px;
+}
+.black-fill-circle {
+    width: 52px;
+    height: 52px;
+    background: rgba(0, 0, 0, 1);
+    border-radius: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.need-help-now-btn {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+.need-help-now-btn p {
+    color: rgba(0, 0, 0, 1);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+}
+.need-help-now-btn a {
+    color: rgba(0, 0, 0, 1);
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 26px;
+    transition: color 0.3s ease-in-out;
+}
+.need-help-now-btn a:hover {
+    color: rgba(0, 208, 97, 1);
+}
+.about-right-container {
+    max-width: 630px;
+    width: 100%;
+    line-height: 0;
+}
+#about-img {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+/************************ 9. Clean Energy CSS ***************************/
+.clean-energy-section {
+    max-width: 1320px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+.clean-energy-container {
+    background-image: url('../images/clean-energy/clean-energy-bg.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    padding: 60px 110px 60px 60px;
+    display: flex;
+    align-items: flex-start;
+    gap: 100px;
+}
+.clean-energy-left-container {
+    max-width: 395px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+.clean-energy-left-bottom-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 120px;
+}
+.clean-energy-person-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+.clean-energy-person-container img{
+    border-radius: 50%;
+}
+.clean-energy-person-2 {
+    position: absolute;
+    left: 50px;
+}
+.clean-energy-person-3 {
+    position: absolute;
+    left: 100px;
+}
+.clean-energy-content-container {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.clean-energy-content-container h3 {
+    color: rgba(0, 0, 0, 1);
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 36px;
+}
+.clean-energy-star-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.clean-energy-star-container h4 {
+    color: rgba(34, 34, 34, 1);
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 24px;
+}
+.clean-energy-right-container {
+    max-width: calc(100% - 495px);
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    gap: 30px;
+}
+.clean-energy-financial-savings,
+.clean-energy-well-experienced {
+    max-width: 300px;
+    width: 100%;
+    line-height: 0;
+}
+.clean-energy-financial-savings h3,
+.clean-energy-well-experienced h3 {
+    color: rgba(0, 0, 0, 1);
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 32px;
+    padding: 20px 0 10px 0;
+}
+.clean-energy-financial-savings p,
+.clean-energy-well-experienced p {
+    color: rgba(34, 34, 34, 1);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 30px;
+}
+/************************ 10. Service Solutions CSS ***************************/
+.service-solutions-section {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../images/service-solutions/service-solutions-bg.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    margin: 100px auto;
+    padding: 100px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+.service-solutions-container {
+    max-width: 1320px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0px 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.service-solutions-top-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 30px;
+}
+.service-solutions-top-left-container,
+.service-solutions-top-right-container {
+    max-width: 630px;
+    width: 100%;
+}
+.service-solutions-top-left-container h2 {
+    color: rgba(255, 255, 255, 1);
+}
+.service-solutions-top-right-container p {
+    color: rgba(255, 255, 255, 1);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 30px;
+}
+.service-container-main {
+    position: relative;
+    max-width: calc(100vw - ((100vw - 1320px) / 2));
+    width: 100%;
+    margin: 0 0 0 auto;
+    padding: 0 0 0 15px;
+}
+.service-solutions-bottom-container {
+    max-width: 100%;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    height: auto;
+}
+.service-solutions-autoplay .slick-slide {
+    margin: 0 15px;
+    min-height: 0;
+}
+.service-solutions-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+.service-solutions-card {
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 1);
+    overflow: hidden;
+    width: 410px;
+    cursor: pointer;
+}
+.service-solutions-top-card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 40px;
+}
+.service-solutions-top-card-content h3 {
+    color: rgba(0, 0, 0, 1);
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 32px;
+    text-align: center;
+}
+.service-solutions-top-card-content p {
+    color: rgba(34, 34, 34, 1);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: center;
+}
+.service-solutions-bottom-card-content {
+    line-height: 0;
+    position: relative;
+    overflow: hidden;
+}
+.service-solutions-bottom-card-content::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.35);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.6s ease-out;
+}
+.service-solutions-card:hover .service-solutions-bottom-card-content::after {
+    width: 550px;
+    height: 550px;
+    opacity: 1;
+}
+.service-solutions-img {
+    display: block;     
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    transform-origin: center center;
+}
+.learn-more-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: rgba(0, 208, 97, 1);
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 24px;
+    padding: 20px 0;
+    transition: all 0.6s ease-out;
+}
+.service-solutions-card:hover .learn-more-btn{
+    background-color: rgba(0, 208, 97, 1);
+    color: #FFF;
+}
+.learn-more-btn img {
+    transition: transform 0.6s ease-out;
+}
+.service-solutions-card:hover .learn-more-btn img{
+    filter: brightness(0) saturate(100%) invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg) brightness(102%) contrast(102%);
+    transform: rotate(42deg);
+}
+/************************ 11. Solar Benefits CSS ***************************/
+.solar-benefits-section {
+    position: relative;
+    max-width: 1320px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 15px 250px 15px;
+}
+.solar-benefits-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 30px;
+}
+.solar-benefits-left-container,
+.solar-benefits-right-container {
+    max-width: 630px;
+    width: 100%;
+}
+.solar-benefits-left-container h2 {
+    padding-top: 10px;
+}
+.solar-benefits-left-container .solar-benefits-para2 {
+    color: rgba(34, 34, 34, 1);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 30px;
+    padding: 30px 0 20px 0;
+}
+.solar-benefits-left-container .solar-benefits-para3 {
+    color: rgba(34, 34, 34, 1);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 30px;
+    padding-bottom: 42px;
+}
+.solar-benefits-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+.solar-benefits-list li {
+    color: rgba(0, 0, 0, 1);
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 24px;
+    position: relative;
+    padding-left: 34px;
+}
+.solar-benefits-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 24px;
+    height: 24px;
+    background-image: url('../images/about/about-list.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+#solar-benefits-img {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+/************************ 12. Counter CSS ***************************/
+.counter-section {
+    max-width: 1320px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 15px;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+.counter-container {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../images/counter/counter.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border-radius: 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    padding: 100px 40px;  
+    overflow: hidden;
+}
+.counter-box {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+}
+.counter-box:not(:first-child) {
+    padding-left: 54px;
+}
+.counter-box:not(:first-child):before {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 300px;
+    left: 0;
+    background-color: #ffffff26;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.counter-box h2 {
+    color: rgba(255, 255, 255, 1);
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 66px;
+}
+.counter-box p {
+    color: rgba(255, 255, 255, 1);
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 24px;
+}
+/************************ 13. How It Works CSS ***************************/
+.how-it-works-section {
+    background-color: rgba(245, 246, 247, 1);
+    position: relative;
+    z-index: 1;
+}
+.how-it-works-left-img {
+    position: absolute;
+    bottom: 0;
+    left: 20px;
+    z-index: -1;
+}
+.how-it-works-right-img {
+    position: absolute;
+    bottom: 0;
+    right: 20px;
+    z-index: -1;
+}
+.how-it-works-container {
+    max-width: 1320px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 250px 15px 100px 15px;
+}
+.how-it-works-container .how-it-works-para1 {
+    text-align: center;
+}
+.how-it-works-container h2 {
+    text-align: center;
+    padding: 10px 0 20px 0;
+}
+.how-it-works-container .how-it-works-para2 {
+    max-width: 850px;
+    width: 100%;
+    margin: 0 auto;
+    color: rgba(34, 34, 34, 1);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 30px;
+    text-align: center;
+}
+.how-it-works-grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    padding-top: 30px;
+    position: relative;
+}
+.how-it-works-grid-container::before {
+    content: "";
+    position: absolute;
+    top: 45px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: rgba(255, 255, 255, 1);
+}
+.how-it-works-grid-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 300px;
+    width: 100%;
+}
+.step-text {
+    width: 100px;
+    height: 34px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 1);
+    color: rgba(0, 208, 97, 1);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+.how-it-works-grid-box img {
+    margin-top: 30px;
+    transition: transform 0.6s ease;
+    transform-style: preserve-3d;
+}
+.how-it-works-grid-box:hover img {
+    transform: rotateY(180deg);   
+}
+.how-it-works-grid-box h3 {
+    color: rgba(0, 0, 0, 1);
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 32px;
+    padding: 20px 0 10px 0;
+    transition: all 0.3s ease-in-out;
+}
+.how-it-works-grid-box:hover h3{
+    color: rgba(0, 208, 97, 1);
+}
+.how-it-works-grid-box .how-it-works-grid-box-para {
+    color: rgba(34, 34, 34, 1);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+}
+/************************ 14. Single Project CSS ***************************/
+.single-project-container{
+    max-width: 1320px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 100px 15px 0 15px;
+}
+.single-project-left-right-container{
+    display: flex;
+    align-items: flex-start;
+    gap: 30px;
+}
+.single-project-left-container, .single-project-right-container{
+    max-width: 630px;
+    width: 100%;
+}
+.single-project-list{
+    padding-top: 30px;
+}
+.single-project-list li{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 15px 0;
+    position: relative;
+}
+.single-project-list li::after{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;                    
+    height: 1px;
+    background: rgba(168, 169, 173, 1);
+}
+.single-project-list4 li::after{
+    width: 410px;
+}
+.single-project-list li:last-child::after{
+    display: none; 
+}
+.single-project-list li:first-child{
+    padding-top: 0;
+}
+.single-project-list li:last-child{
+    padding-bottom: 0;
+}
+.single-project-list li p{
+    color: rgba(0, 0, 0, 1);
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 24px;
+    width: 120px;       
+    flex-shrink: 0;  
+}
+.single-project-list li span{
+    color: rgba(34, 34, 34, 1);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 26px;
+}
+.single-project-para{
+    color: rgba(34, 34, 34, 1);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 30px;
+}
+.single-project-para2{
+    padding-top: 30px;
+}
+.single-project-para3{
+    padding-top: 20px;
+}
+.single-project-objectives-container{
+    display: flex;
+    align-items: flex-start;
+    gap: 30px;
+}
+.single-project-objectives-left-container{
+    max-width: calc(100% - 880px);
+    width: 100%;
+}
+.single-project-objectives-right-container{
+    max-width: 850px;
+    width: 100%;
+}
+.single-project-objectives-left-container h3{
+    color: rgba(0, 0, 0, 1);
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 48px;
+}
+.single-project-list2{
+    padding: 30px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.single-project-list2 li{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.single-project-list2 li p{
+    color: rgba(34, 34, 34, 1);
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 30px;
+}
+.single-project-image-container{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    padding: 30px 0 60px 0;
+}
+.single-project-image-container img{
+    width: 100%;
+}
+.single-project-key-container{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    padding: 30px 0 60px 0;
+}
+.single-project-key-card{
+    border-radius: 20px;
+    background: rgba(0, 208, 97, 0.1);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.single-project-key-card h4{
+    color: rgba(0, 0, 0, 1);
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 36px;
+}
+.single-project-key-card p{
+    color: rgba(34, 34, 34, 1);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 30px;
+}
+.single-project-img6{
+    margin: 30px 0 60px 0;
+    width: 100%;
+    border-radius: 30px;
+}
+.single-project-para4{
+    color: rgba(34, 34, 34, 1);
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 36px;
+    padding: 20px 0 40px 0;
+}
+.single-project-person-container{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.single-project-person-img{
+    line-height: 0;
+}
+.single-project-person-img img{
+    border-radius: 50%;
+}
+.single-project-person-content{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.single-project-person-content h4{
+    color: rgba(0, 0, 0, 1);
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 32px;
+}
+.single-project-person-content p{
+    color: rgba(34, 34, 34, 1);
+    font-size: 18px;    
+    font-weight: 500;
+    line-height: 24px;
+}
+/************************ 15. Testimonials CSS ***************************/
+.testimonial-container {
+    max-width: 1320px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 15px;
+    display: flex;
+    align-items: flex-start;
+    gap: 110px;
+}
+.testimonial-left-container {
+    max-width: 550px;
+    width: 100%;
+    line-height: 0;
+}
+.testimonial-left-container img{
+    border-radius: 30px;
+}
+.testimonial-right-container {
+    max-width: 630px;
+    width: 100%;
+    border-radius: 30px;
+    background: rgba(245, 246, 247, 1);
+    padding: 30px;
+    position: relative;
+}
+.testimonial-right-top-container h2 {
+    padding: 10px 0 30px 0;
+}
+.testimonial-slide {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 98px;
+}
+.testimonial-right-top-content .testimonial-para2 {
+    color: rgba(34, 34, 34, 1);
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 36px;
+    padding-top: 20px;
+}
+.testimonial-person-content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.testimonial-person {
+    line-height: 0;
+}
+.testimonial-person img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.testimonial-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.testimonial-content h3 {
+    color: rgba(0, 0, 0, 1);
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 32px;
+}
+.testimonial-content p {
+    color: rgba(34, 34, 34, 1);
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 24px;
+}
+.testimonial-arrow {
+    position: absolute;
+    right: 30px;
+    bottom: 46px;
+    width: 110px;
+    height: 48px;
+    border-radius: 24px;
+    background: rgba(0, 0, 0, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.testimonial-prev-arrow,
+.testimonial-next-arrow {
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+.testimonial-prev-arrow:hover,
+.testimonial-next-arrow:hover {
+    filter: brightness(0) saturate(100%) invert(75%) sepia(56%) saturate(4103%) hue-rotate(98deg) brightness(91%) contrast(101%);
+}
+/************************ 16. Our Expert CSS ***************************/
+.our-expert-container {
+    max-width: 1320px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 100px 15px;
+}
+.our-expert-container .our-expert-para1 {
+    text-align: center;
+}
+.our-expert-container h2 {
+    max-width: 630px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    padding: 10px 0 40px 0;
+}
+.our-expert-grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+.our-expert-grid-card {
+    cursor: pointer;
+    line-height: 0;
+    transition: all 0.4s ease-in-out;
+}
+.our-expert-grid-card:hover {
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.14);
+    border-radius: 20px;
+    transform: scale(1.06);
+}
+.our-expert-grid-card a img {
+    transition: all 0.4s ease-in-out;
+    border-radius: 20px 20px 0 0;
+}
+.our-expert-grid-card:hover a img {
+    filter: grayscale(70%);
+}
+.our-expert-grid-content {
+    position: relative;
+    border: 2px solid rgba(245, 246, 247, 1);
+    border-top: none;
+    border-radius: 0 0 20px 20px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.our-expert-grid-content h3 {
+    color: rgba(0, 0, 0, 1);
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 32px;
+    transition: all 0.4s ease-in-out;
+}
+.our-expert-grid-card:hover h3{
+    color: rgba(0, 208, 97, 1);
+}
+.our-expert-grid-content p {
+    color: rgba(34, 34, 34, 1);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+}
+.our-expert-share-icon-container {
+    line-height: 0;
+    position: absolute;
+    bottom: 0;
+    right: 17px;
+}
+.our-expert-share-icon {
+    position: absolute;
+    top: 56%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.our-expert-social-icons{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    position: absolute;
+    right: 40px;
+    bottom: 60px;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(20px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.our-expert-grid-card:hover .our-expert-social-icons{
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+.our-expert-social-icons a{
+    height: 40px;
+    width: 40px;
+    background: #f5f6f7;
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease-in-out;
+}
+.our-expert-social-icons a:hover{
+    background: rgba(0, 208, 97, 1);
+}
+/************************ 17. Free Installation CSS ***************************/
+.free-installation-section {
+    display: flex;
+    align-items: center;
+    overflow-x: hidden;
+}
+.free-installation-left-container {
+    background-color: #000;
+    clip-path: polygon(0 0, 100% 0, 91% 100%, 0 100%);
+    max-width: 1055px;
+    width: 100%;
+}
+.free-installation-content {
+    max-width: 630px;
+    width: 100%;
+    margin: 0 110px 0 auto;
+    padding: 100px 0;
+}
+.free-installation-content h2 {
+    color: rgba(255, 255, 255, 1);
+}
+.free-installation-content .free-installation-text {
+    color: rgba(0, 208, 97, 1);
+}
+.free-installation-content .free-installation-para1 {
+    color: rgba(168, 169, 173, 1);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 30px;
+    padding: 20px 0 40px 0;
+}
+.contact-us-today {
+    max-width: 223px;
+    width: 100%;
+    height: 64px;
+}
+.free-installation-right-container {
+    line-height: 0;
+    max-width: 1055px;
+    width: 100%;
+    margin-left: -190px;
+    margin-bottom: 40px;
+}
+/************************ 18. Latest News CSS ***************************/
+.latest-news-container {
+    max-width: 1320px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 100px 15px;
+}
+.latest-news-container .latest-news-para1 {
+    text-align: center;
+}
+.latest-news-container h2 {
+    text-align: center;
+    padding: 10px 0 60px 0;
+}
+.masonry-grid {
+    column-count: 3;
+    column-gap: 30px;
+}
+.masonry-grid2{
+    column-count: 2;
+    column-gap: 30px;
+}
+.latest-news-grid-card {
+    line-height: normal;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 54px;
+    width: 100%;
+}
+.latest-news-grid-card2{
+    margin-bottom: 0;
+}
+.latest-news-grid-card .latest-news-grid-card-animate {
+    position: relative;
+    overflow: hidden;
+    display: block;
+    border-radius: 20px;
+}
+.latest-news-grid-card .latest-news-grid-card-animate img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 20px;
+}
+.latest-news-grid-card .latest-news-grid-card-animate::before {
+    content: "";
+    position: absolute;
+    inset: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(0, 208, 97, 0.18);
+    transform: translate(-50%, -50%);
+    transition: width 0.8s ease, height 0.8s ease;
+    pointer-events: none;
+}
+.latest-news-grid-card:hover .latest-news-grid-card-animate::before {
+    width: 220%;
+    height: 220%;
+}
+.latest-news-card-content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 0 15px 0;
+}
+.latest-news-hr-line {
+    width: 30px;
+    height: 4px;
+    background: rgba(34, 34, 34, 1);
+}
+.latest-news-date {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.latest-news-date p {
+    color: rgba(34, 34, 34, 1);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+}
+.latest-news-date .latest-news-vertical-line {
+    width: 2px;
+    height: 16px;
+    background-color: rgba(168, 169, 173, 1);
+}
+.latest-news-date span {
+    color: rgba(168, 169, 173, 1);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+}
+.latest-news-grid-card .latest-news-grid-card-h3 {
+    color: rgba(0, 0, 0, 1);
+    font-size: 30px;
+    font-weight: 500;
+    line-height: 40px;
+    padding-left: 50px;
+    transition: color 0.3s ease-in-out;
+}
+.latest-news-grid-card .latest-news-grid-card-animate:hover ~ .latest-news-grid-card-h3, 
+.latest-news-grid-card .latest-news-grid-card-h3:hover{
+    color: #00D061; 
+}
+/************************ 19. Footer CSS ***************************/
+footer {
+    background: rgba(0, 0, 0, 1);
+    width: 100%;
+}
+.footer-container {
+    max-width: 1320px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 100px 15px 0 15px;
+}
+.footer-top-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 110px;
+}
+.footer-top-left-container {
+    max-width: 330px;
+    width: 100%;
+}
+.footer-logo {
+    display: block;
+    line-height: 0;
+}
+.footer-top-left-container p {
+    color: rgba(168, 169, 173, 1);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 30px;
+    padding: 20px 0 40px 0;
+}
+.footer-social-icons {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.footer-social-icons a {
+    width: 48px;
+    height: 48px;
+    background: rgba(34, 34, 34, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease-in-out;
+}
+.footer-social-icons a:hover {
+    background: rgba(0, 208, 97, 1);
+    border-radius: 10px;
+}
+.footer-social-icons a:hover img {
+    filter: brightness(0) saturate(100%) invert(7%) sepia(23%) saturate(6%) hue-rotate(317deg) brightness(106%) contrast(86%);
+}
+.footer-top-right-container {
+    max-width: 850px;
+    width: 100%;
+    display: flex;
+    gap: 30px;
+}
+.contact-home-rakshak-solar,
+.quick-links {
+    max-width: 410px;
+    width: 100%;
+}
+.contact-home-rakshak-solar h3,
+.quick-links h3 {
+    color: rgba(255, 255, 255, 1);
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 32px;
+    padding: 24px 0;
+    margin-bottom: 20px;
+}
+.contact-home-rakshak-solar-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.contact-home-rakshak-solar-content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.contact-home-rakshak-solar-content .contact-home-rakshak-solar-icon {
+    max-width: 330px;
+    width: 100%;
+    width: 60px;
+    height: 60px;
+    display: block;
+    border: 2px solid rgba(34, 34, 34, 1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.contact-home-rakshak-solar-content .contact-home-rakshak-solar-details {
+    max-width: calc(100% - 80px);
+    width: 100%;
+    color: rgba(168, 169, 173, 1);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 30px;
+    transition: all 0.3s ease-in-out;
+}
+.contact-home-rakshak-solar-content:hover .contact-home-rakshak-solar-details {
+    color: rgba(0, 208, 97, 1);
+}
+.quick-links-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 30px;
+}
+.quick-links-left-container,
+.quick-links-right-container {
+    max-width: 190px;
+    width: 100%;
+}
+.quick-links-name {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.quick-links-name a {
+    color: rgba(168, 169, 173, 1);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 44px;
+    transition: all 0.3s ease-in-out;
+}
+.quick-links-name:hover a {
+    color: rgba(0, 208, 97, 1);
+    transform: translateX(5px);
+}
+.footer-hr-line {
+    width: 100%;
+    height: 2px;
+    background: rgba(34, 34, 34, 1);
+    margin-top: 40px;
+}
+.footer-bottom-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    padding: 30px 0;
+}
+.footer-bottom-content P, .footer-bottom-content a{
+    color: rgba(168, 169, 173, 1);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 30px;
+    transition: all 0.3s ease-in-out;
+}
+.footer-bottom-content a:hover{
+    color: rgba(0, 208, 97, 1);
+}
+/************************ 20. About Common Page CSS ***************************/
+.common-page-section{
+    background: rgba(0, 0, 0, 1);
+    overflow: hidden;
+}
+.common-page-wrapper{
+    position: relative;
+}
+.about-page-left-img{
+    position: absolute;
+    left: 0;
+    bottom: 45px;
+}
+.about-page-right-img{
+    position: absolute;
+    bottom: 0;
+    right: 40px;
+}
+.common-page-container{
+    max-width: 1320px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 210px 15px 135px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+}
+.common-page-container h1{
+    color: rgba(255, 255, 255, 1);
+    font-size: 80px;
+    font-weight: 700;
+    line-height: 100px;
+    text-align: center;
+}
+.common-page-links{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.common-page-home-link{
+    color: rgba(0, 208, 97, 1);
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 36px;
+}
+.common-page-hr-line{
+    width: 8px;
+    height: 2px;
+    background-color: rgba(255, 255, 255, 1);
+}
+.common-page-active-link{
+    color: rgba(255, 255, 255, 1);
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 36px;
+    transition: color 0.4s ease-in-out;
+}
+.common-page-active-link:hover, .common-page-home-link:hover{
+    color: rgba(0, 208, 97, 1);
+}
+/************************ 21. About Page CSS ***************************/
+.about-page-section{
+    max-width: 1320px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 100px 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.about-page-top-container{
+    display: flex;
+    align-items: flex-start;
+    gap: 110px;
+}
+.about-page-top-left-container{
+    max-width: 550px;
+    width: 100%;
+}
+.about-page-top-left-container h2{
+    padding-top: 10px;
+}
+.about-page-top-right-container{
+    max-width: 630px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+.about-page-bottom-container{
+    display: flex;
+    align-items: flex-start;
+    gap: 60px;
+}
+.about-page-bottom-left-container{
+    max-width: 600px;
+    width: 100%;
+    line-height: 0;
+}
+.about-page-bottom-right-container{
+    max-width: 630px;
+    width: 100%;
+    padding-top: 48px;
+}
+.about-page-bottom-right-container .about-page-bottom-right-container-para1{
+    color: rgba(34, 34, 34, 1);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 30px;
+}
+.our-vision-mission-container{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    padding: 40px 0 60px 0;
+}
+.our-vision-container, .our-mission-container{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.our-vision-container h3, .our-mission-container h3{
+    color: rgba(0, 0, 0, 1);
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 32px;
+}
+.our-vision-container p, .our-mission-container p{
+    color: rgba(34, 34, 34, 1);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+}   
+.explore-our-services-btn-container{
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+.explore-our-services-btn{
+    width: 249px;
+    height: 64px;
+    border-radius: 32px;
+}
+/************************ 22. About Why Choose Us CSS ***************************/
+.why-choose-us-container{
+    max-width: 1320px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 100px 15px 0 15px;
+    display: flex;
+    align-items: flex-start;
+    gap: 110px;
+}
+.why-choose-us-left-container{
+    max-width: 550px;
+    width: 100%;
+    line-height: 0;
+}
+.why-choose-us-left-container img{
+    border-radius: 30px;
+}
+.why-choose-us-right-container{
+    max-width: 630px;
+    width: 100%;
+}
+.why-choose-us-right-container h2{
+    padding: 10px 0 30px 0;
+}
+.why-choose-us-right-container .why-choose-us-para2{
+    color: rgba(34, 34, 34, 1);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 30px;
+    padding-bottom: 40px;
+}
+.why-choose-us-content-container{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.why-choose-us-icon-container{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+.why-choose-us-icon-container h3{
+    color: rgba(0, 0, 0, 1);
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 36px;
+}
+.why-choose-us-content-container p{
+    color: rgba(34, 34, 34, 1);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 30px;
+}
+.why-choose-us-hr-line{
+    height: 2px;
+    width: 100%;
+    background: rgba(245, 246, 247, 1);
+    margin: 30px 0;
+}
+/************************ 23. About Our Solutions CSS ***************************/
+.our-solutions-container{
+    max-width: 1320px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 100px 15px;
+    display: flex;
+    align-items: flex-start;
+    gap: 30px;
+}
+.our-solutions-left-container, .our-solutions-right-container{
+    max-width: 630px;
+    width: 100%;
+}
+.our-solutions-left-container{
+    line-height: 0;
+}
+.our-solutions-right-container h2{
+    padding-top: 10px;
+}
+.our-solutions-right-container .our-solutions-right-container-para2{
+    color: rgba(34, 34, 34, 1);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 30px;
+    padding: 30px 0;
+}
+.faq-item{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;  
+    padding-bottom: 15px;
+}
+.faq-item.active{
+    padding-bottom: 30px;
+}
+.faq-item:last-child{
+    padding-bottom: 0;
+}
+.question-left-contents{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    padding: 12px;
+    cursor: pointer;
+    background: rgba(245, 246, 247, 1);
+}
+.faq-item.active .question-left-contents{
+    background: rgba(0, 208, 97, 0.1);
+}
+.question-text{
+    color: rgba(0, 0, 0, 1);
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 30px;
+    transition: all 0.4s ease-in-out;
+}
+.faq-item.active .question-text{
+    color: rgba(0, 208, 97, 1);
+}
+.question-left-contents:hover .question-text{
+    color: rgba(0, 208, 97, 1);
+}
+.faq-ans{
+    color: rgba(34, 34, 34, 1);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+}
+.faq-arrow{
+    transition: transform 0.4s ease-in-out;
+}
+.faq-item.active .faq-arrow{
+    transform: rotate(360deg);
+}
+.faq-answer{
+    display: none;
+}
+.faq-item.active .faq-answer{
+    display: block;
+}
+/************************ 24. Gallery CSS ***************************/
+.gallery-container{
+    max-width: 1320px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 100px 15px;
+}
+.gallery-card-container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+.gallery-wrapper{
+    position: relative;
+    overflow: hidden;
+}
+.gallery-img{
+    display: block;
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+.gallery-wrapper:hover .gallery-img{
+    transform: scale(1.15); 
+}
+.gallery-overlay{
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(0, 208, 97, 0.60);
+    overflow: hidden;
+    width: 100%;
+    height:0;
+    transition: all 0.6s ease;
+}
+.gallery-wrapper:hover .gallery-overlay{
+    bottom: 0;
+    height: 100%;
+}
+.gallery-plus-icon{
+    height: 60px;
+    width: 60px;
+    background: rgba(0, 0, 0, 1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.gallery-popup{
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 10001;
+    padding: 0 15px;
+}
+.popup-wrapper{
+    display: flex;
+    align-items: center;
+    gap: 20px; 
+}
+.popup-content{
+    position: relative;
+    max-width: 80vw;
+    max-height: 80vh;
+    line-height: 0;
+}
+.gallery-popup img{
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 10px;
+}
+.prev-btn,
+.next-btn{
+    font-size: 44px;
+    color: #fff;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.3s ease-in-out;
+}
+.close-popup{
+    position: absolute;
+    top: -16px;
+    right: -24px;
+    font-size: 44px;
+    color: #FFF;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+.close-popup:hover, .prev-btn:hover, .next-btn:hover, .video-close-popup:hover, .video-popup-close:hover{
+    color: rgba(0, 208, 97, 1);
+} 
+/************************ 25. Team Details CSS ***************************/
+.team-details-container{
+    max-width: 1320px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 100px 15px 0 15px;
+    display: flex;
+    align-items: flex-start;
+    gap: 30px;
+}
+.team-details-left-container{
+    max-width: 520px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+.team-details-left-container img{
+    border-radius: 20px;
+    transition: all 0.4s ease-in-out;
+}   
+.team-details-left-container:hover img{
+    filter: grayscale(70%);
+}
+.team-details-right-container{
+    position: sticky;
+    top: 120px;
+    max-width: calc(100% - 550px);
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    gap: 62px;
+}
+.team-details-icons-container{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.team-details-icons-container a{
+    width: 48px;
+    height: 48px;
+    background: rgba(255, 255, 255, 1);
+    border: 2px solid rgba(245, 246, 247, 1);
+    border-radius: 24px;
+    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease-in-out;
+}
+.team-details-icons-container a:hover{
+    background: #000;
+    border: none;
+}
+.team-details-icons-container a:hover img{
+    filter: brightness(0) saturate(100%) invert(64%) sepia(24%) saturate(3007%) hue-rotate(99deg) brightness(92%) contrast(101%);
+}
+.team-details-content-container h2{
+    padding: 10px 0 30px 0;
+} 
+.team-details-content-container .team-details-para2{
+    color: rgba(34, 34, 34, 1);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 30px;
+}
+.team-details-content-container .team-details-para3{
+    padding: 15px 0 30px 0;
+}
+.progress-section{
+    background: rgba(245, 246, 247, 1);
+    border-radius: 20px;
+    padding: 30px;
+}
+.progress-bar{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+.progress-item{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.progress-head{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+.item-label, .item-value{
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 36px;
+}
+.item-label{
+    color: rgba(0, 0, 0, 1);
+}
+.item-value{
+    color: rgba(34, 34, 34, 1);
+}
+.item-bar{
+    width: 100%;
+    height: 4px;
+    background: rgba(255, 255, 255, 1);
+    position: relative;
+    overflow: hidden;
+}
+.progress{
+    width: 0;
+    height: 4px;
+    background: rgba(0, 208, 97, 1);
+    transition: width 0.3s ease;
+}
+/************************ 26. Careers CSS ***************************/
+.careers-container{
+    max-width: 1320px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 100px 15px 0 15px;
+}
+.careers-container .careers-container-para1{
+    text-align: center;
+}
+.careers-container h2{
+    text-align: center;
+    padding: 10px 0 60px 0;
+}
+.careers-grid-container{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 30px;
+}
+.careers-grid-box{
+    border: 2px solid rgba(245, 246, 247, 1);
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 1);
+    padding: 30px 60px 30px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    transition: all 0.3s ease-in-out;
+}
+.careers-grid-box:hover{
+    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1);
+    transform: translateX(15px);
+}
+.careers-grid-box-content h3{
+    color: rgba(0, 0, 0, 1);
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 48px;
+}
+.careers-grid-box-content .careers-container-para2{
+    color: rgba(34, 34, 34, 1);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 24px;
+    padding: 15px 0 20px 0;
+}
+.on-site-full-time-buttons-container{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.on-site-full-time-buttons-container p{
+    border-radius: 10px;
+    background: rgba(245, 246, 247, 1);
+    padding: 8px 15px;
+    color: rgba(168, 169, 173, 1);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    cursor: pointer;
+    transition: all 0.4s ease-in-out;
+}
+.on-site-full-time-buttons-container p:hover{
+    background: rgba(0, 208, 97, 1);
+    color: #FFF;
+}
+.apply-now-btn{
+    width: 149px;
+}
+/************************ 27. Careers Page Clean Energy CSS ***************************/
+.clean-energy-section2{
+    padding: 0 15px 100px 15px;
+}
+/************************ 28. Pricing Plan CSS ***************************/
+.pricing-plan-container{
+    max-width: 1320px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 100px 15px;
+}
+.pricing-plan-container .pricing-plan-para{
+    text-align: center;
+}
+.pricing-plan-container h2{
+    text-align: center;
+    padding: 10px 0 60px 0;
+}
+.pricing-plan-grid-container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+.pricing-plan-grid-card{
+    background-color: #FFF;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    border-radius: 30px;
+    padding: 50px 30px 30px 30px;
+}
+.pricing-plan-grid-card h3{
+    color: rgba(0, 0, 0, 1);
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 44px;
+    text-align: center;
+}
+.price-box{
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 8px;
+    padding: 30px 0 40px 0;
+}
+.price-box p{
+    color: rgba(0, 208, 97, 1);
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 50px;
+}
+.price-box span{
+    color: #000000;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 24px;
+}
+.price-list{
+    padding-bottom: 30px;
+}
+.price-list li{
+    position: relative;
+    color: #000000;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 24px;
+    padding: 0 0 14px 30px;
+}
+.price-list li:last-child{
+    padding: 0 0 0 30px;
+}
+.price-list li::before{
+    content: '✔';
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 18px;
+    color: rgba(0, 208, 97, 1);
+}
+.get-started-btn{
+    width: 100%;
+    height: 64px;
+}
+.pricing-plan-grid-card.center-card{
+    background-color: rgba(0, 208, 97, 1);
+}
+.pricing-plan-grid-card.center-card h3, 
+.pricing-plan-grid-card.center-card .price-box p,
+.pricing-plan-grid-card.center-card .price-box span,
+.pricing-plan-grid-card.center-card .price-list li,
+.pricing-plan-grid-card.center-card .price-list li::before{
+    color: #FFF;
+}
+.pricing-plan-grid-card.center-card .get-started-btn{
+    background: #FFF;
+    color: rgba(0, 208, 97, 1);
+}
+.pricing-plan-grid-card.center-card .get-a-quote-btn::before,
+.pricing-plan-grid-card.center-card .get-a-quote-btn::after{
+    background: #FFF;
+}
+/************************ 29. Our Clients CSS ***************************/
+.our-clients-container{
+    max-width: 1320px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 100px 15px;
+}
+.our-clients-container p{
+    text-align: center;
+}
+.our-clients-container h2{
+    text-align: center;
+    padding: 10px 0 60px 0;
+}
+.our-clients-grid-container{
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 54px;
+}
+.our-clients-grid-container img{
+    width: 100%;
+}
+/************************ 30. Testimonials Page CSS ***************************/
+.testimonials-page-container{
+    max-width: 1320px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 100px 15px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+.testimonials-page-grid-box{
+    background: rgba(245, 246, 247, 1);
+    border-radius: 30px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 90px;
+    transition: all 0.3s ease-in-out;
+}
+.testimonials-page-grid-box:hover{
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+}
+.testimonials-page-star-icons-group{
+    line-height: 0;
+    padding: 16px 0 33px 0;
+}
+.testimonials-page-grid-box-top-content p{
+    color: rgba(34, 34, 34, 1);
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 30px;
+}
+.testimonials-page-grid-box-bottom-content{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.testimonials-page-person-img{
+    line-height: 0;
+    transition: all 0.3s ease-in-out;
+}
+.testimonials-page-grid-box:hover .testimonials-page-person-img{
+    transform: scale(1.15);
+}
+.testimonials-page-person-img img{
+    border-radius: 50px;
+}
+.testimonials-page-person-info{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.testimonials-page-person-info .testimonial-person-name{
+    color: rgba(0, 0, 0, 1);
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 30px;
+}
+.testimonials-page-person-info .testimonial-person-date{
+    color: rgba(34, 34, 34, 1);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+}
+/************************ 31. FAQ CSS ***************************/
+.our-solutions-container2{
+    display: flex;
+    align-items: flex-start;
+    gap: 110px;
+}
+.our-solutions-right-container2{
+    max-width: 850px;
+    width: 100%;
+}
+.our-solutions-left-container2{
+    max-width: 330px;
+    width: 100%;
+}
+.question-left-contents2{
+    padding: 12px 15px;
+}
+.question-text2{
+    font-weight: 500;
+}
+/************************ 32. FAQ Testimonials CSS ***************************/
+.testimonial-container2{
+    padding: 100px 15px;
+}
+/************************ 33. Get A Quote CSS ***************************/
+.get-your-quote-container{
+    max-width: 1320px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 100px 15px;
+}
+.get-your-quote-container .get-your-quote-para{
+    text-align: center;
+}
+.get-your-quote-container h2{
+    max-width: 630px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    padding: 10px 0 60px 0;
+}
+.get-your-quote-grid-container{
+    background: rgba(168, 169, 173, 0.1);
+    border-radius: 20px;
+    padding: 60px 50px;
+}
+.form-grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+.form-group{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.form-group label{
+    color: rgba(34, 34, 34, 1);
+    font-size: 16px;    
+    font-weight: 600;
+    line-height: 24px;
+    text-transform: uppercase;
+}
+.form-control{
+    height: 56px;
+    background: #FFF;
+    padding: 0 18px;
+    border-radius: 14px;
+    border: none;
+    outline: none;
+    color: rgba(34, 34, 34, 1);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+}
+.form-control:focus{
+    border: 1px solid rgba(0, 208, 97, 1);
+}
+.form-control::placeholder{
+    color: rgba(34, 34, 34, 1);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+}
+.custom-select{
+    position: relative;
+    width: 100%;
+}
+.select-head{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+}
+.select-head .arrow{
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: contain;
+    transition: transform 0.3s ease;
+}
+.custom-select.open .arrow{
+    transform: rotate(180deg);
+}
+.select-list{
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+    right: 0;
+    background: #FFF;
+    border: 1px solid rgba(0, 208, 97, 1);
+    border-radius: 14px;
+    display: none;
+    z-index: 10;
+}
+.select-list li{
+    cursor: pointer;
+    padding: 10px 18px;
+    color: rgba(34, 34, 34, 1);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+}
+.select-list li:first-child{
+    border-radius: 14px 14px 0 0;
+}
+.select-list li:last-child{
+    border-radius: 0 0 14px 14px;
+}
+.select-list li:hover,
+.select-list li.active{
+    background: rgba(0, 208, 97, 1);
+    color: #FFF;
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button{
+    -webkit-appearance: none;
+    margin: 0;
+}
+.get-a-quote-page-btn{
+    margin: 40px auto 0 auto;
+}
+/************************ 34. Error CSS ***************************/
+.error-container{
+    max-width: 880px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 100px 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.error-container h2{
+    padding: 10px 0 30px 0;
+    text-align: center;
+}
+.error-container .error-container-para2{
+    color: rgba(34, 34, 34, 1);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 30px;
+    text-align: center;
+}
+.error-container img{
+    padding: 40px 0;
+    animation: smoothZoom 4s ease-in-out infinite;
+}
+@keyframes smoothZoom{
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.08);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+.back-to-home-btn{
+    width: 196px;
+    height: 64px;
+}
+/************************ 35. Coming Soon CSS ***************************/
+.coming-soon-section{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('../images/coming-soon/coming-soon-bg-img.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+}
+.coming-soon-container{
+    max-width: 1320px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+.coming-soon-top-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 15px;
+}
+.coming-soon-social-icons{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.coming-soon-social-icons a{
+    height: 36px;
+    width: 36px;
+    border-radius: 50%;
+    background: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease-in-out;
+}
+.coming-soon-social-icons a:hover{
+    background-color: rgba(0, 208, 97, 1);
+    border-radius: 30px 0 30px 30px;
+}
+.coming-soon-social-icons a img{
+    height: 20px;
+    width: 20px;
+    transition: all 0.3s ease-in-out;
+}
+.coming-soon-social-icons a:hover img{
+    filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(2%) hue-rotate(196deg) brightness(109%) contrast(101%);
+}
+.coming-soon-bottom-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    padding-top: 66px;
+}
+.coming-soon-bottom-left-container, .coming-soon-bottom-right-container{
+    max-width: 630px;
+    width: 100%;
+    line-height: 0;
+}
+.coming-soon-bottom-left-container h1{
+    color: rgba(255, 255, 255, 1);
+    font-size: 80px;
+    font-weight: 700;
+    line-height: 100px;
+}
+.coming-soon-bottom-left-container .coming-soon-para{
+    color: rgba(255, 255, 255, 1);
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 30px; 
+    padding-top: 4px;
+}
+.coming-soon-counter-container{
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    padding: 60px 0;
+}
+.coming-soon-counter-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.coming-soon-counter-box p{
+    color: rgba(0, 208, 97, 1);
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 64px;
+}
+.coming-soon-counter-box span{
+    color: #A8A9AD;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 30px;
+}
+.copyright-text{
+    color: #FFF;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 28px; 
+    padding-top: 30px;
+}
+.coming-soon-bottom-right-container img{
+    width: 100%;
+    height: 750px;
+    object-fit: contain;
+}
+/************************ 36. Service-1 Page Service Solutions CSS ***************************/
+.service-solutions-section2{
+    margin: 0 auto;
+    padding: 100px 0;  
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+.service-solutions-top-left-container2 h2{
+    color: rgba(0, 0, 0, 1);
+}
+.service-solutions-top-right-container2 p{
+    color: rgba(34, 34, 34, 1);
+}
+.service-solutions-card2{
+    box-sizing: border-box;
+    border: 2px solid rgba(245, 246, 247, 1);
+}
+/************************ 37. Service-2 Page Service Solutions CSS ***************************/
+.service-solutions-section3{
+    max-width: 1320px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 100px 15px 159px 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+.service-solutions-container2{
+    padding: 0;
+}
+.service-solutions-grid-container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 89px 30px;
+}
+.service-solutions-grid-card{
+    position: relative;
+    line-height: 0;
+}
+.services2-img{
+    border-radius: 30px;
+    transition: transform 0.5s ease;
+    transform-origin: center;
+}
+.service-solutions-grid-card:hover .services2-img{
+    transform: scale(1.03);
+}
+.service-solutions-grid-card-content{
+    border-radius: 20px 20px 0px 0px;
+    background: rgba(255, 255, 255, 1);
+    padding: 30px 30px 0 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: absolute;
+    top: 100%;
+    left: 30px;
+    right: 30px;
+    transform: translate(0, -50%);
+    transition: transform 0.5s ease;
+}
+.service-solutions-grid-card:hover .service-solutions-grid-card-content{
+    transform: translateY(-70%);
+}
+.service-solutions-grid-card-content h3{
+    color: rgba(0, 0, 0, 1);
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 30px;
+}
+.ellipsis-text-h3{
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.service-solutions-grid-card-content p{
+    color: rgba(34, 34, 34, 1);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+}
+.ellipsis-text{
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.green-circle-arrow{
+    width: 60px;
+    height: 60px;
+    background: rgba(0, 208, 97, 1);
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    right: 30px;
+    transform: translate(0, -50%);
+}
+/************************ 38. Service-3 Page Service Solutions CSS ***************************/
+.service-solutions-section4{
+    padding: 100px 15px;
+}
+.service-solutions3-grid-container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+.service-solutions3-grid-card{
+    background: #FFF;
+    border-radius: 30px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.12);
+}
+.services3-image-container{
+    position: relative;
+    line-height: 0;
+}
+.services3-image-container img{
+    width: 100%;
+    border-radius: 30px;
+}
+.services3-logo-container{
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120px;
+    height: 120px;
+    background: #FFFFFF;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: animate-pulses 3s linear infinite;
+}
+@keyframes animate-pulses{
+    0%{
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4), 0 0 0 0 rgba(255, 255, 255, 0.7);
+    }
+    40%{
+        box-shadow: 0 0 0 50px rgba(255, 255, 255, 0.0), 0 0 0 0 rgba(255, 255, 255, 0.4);
+    }
+    80%{
+        box-shadow: 0 0 0 50px rgba(255, 255, 255, 0.0), 0 0 0 30px rgba(255, 255, 255, 0);
+    }
+    100%{
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.0), 0 0 0 30px rgba(255, 255, 255, 0);
+    }
+}
+.flip-box{
+    position: relative;
+    width: 72px;
+    height: 72px;
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease;
+}
+.flip-box img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    filter: brightness(0) saturate(100%) invert(70%) sepia(46%) saturate(3893%) hue-rotate(100deg) brightness(92%) contrast(101%);
+}
+.flip-box .back{
+    transform: rotateY(180deg);
+}
+.service-solutions3-grid-card:hover .flip-box{
+    transform: rotateY(180deg);
+}
+.service-solutions3-grid-card-contents{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.service-solutions3-grid-card-content{
+    padding: 70px 30px 30px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.service-solutions3-grid-card-content h3{
+    color: rgba(0, 0, 0, 1);
+    font-size: 24px;    
+    font-weight: 600;
+    line-height: 32px;
+    text-align: center;
+}
+.service-solutions3-grid-card-content p{
+    color: rgba(34, 34, 34, 1);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: center;
+}
+.learn-more-btn2{
+    border-top: 2px solid #F5F6F7;
+    border-radius: 0 0 30px 30px;
+    transition: all 0.3s ease-in-out;
+}
+.service-solutions3-grid-card:hover .learn-more-btn2{
+    background: rgba(0, 208, 97, 1);
+    color: #FFFFFF;
+}
+.service-solutions3-grid-card:hover .learn-more-btn2 img{
+    transform: rotate(45deg);
+}
+.service-solutions3-grid-card:hover .service-solutions3-grid-card-contents img{
+    filter: brightness(0) saturate(100%) invert(100%) sepia(97%) saturate(13%) hue-rotate(237deg) brightness(104%) contrast(104%);
+}
+/************************ 39. Services Page Why Choose Us CSS ***************************/
+.why-choose-us-container2{
+    padding: 0 15px 100px 15px;
+}
+/************************ 40. Single Service CSS ***************************/
+.single-service-container{
+    max-width: 1320px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 100px 15px 0 15px;
+}
+.single-service-container h2{
+    text-align: center;
+}
+.single-service-container .single-service-para{
+    color: rgba(34, 34, 34, 1); 
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 30px;
+    text-align: center;
+}
+.single-service-container .single-service-para1{
+    padding-top: 30px;
+}
+.single-service-image-container{
+    display: flex;
+    gap: 30px;
+    padding: 60px 0;
+}
+.single-service-image-left-container{
+    line-height: 0;
+    border-radius: 30px;      
+    overflow: hidden;        
+    display: inline-block;  
+}
+.single-service-img{
+    transform-origin: center;
+    width: 100%;
+    height: auto;
+}
+.single-service-image-right-container{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+.single-service-image-right-container img, .single-project-image-container img{
+    border-radius: 30px;
+}
+.single-service-image-right-container img, 
+.offer-grid-card-bottom-content img, 
+.single-project-image-container img{
+    transition: all 0.6s ease;
+    filter: brightness(1);
+}
+.single-service-image-right-container img:hover, 
+.offer-grid-card-bottom-content img:hover, 
+.single-project-image-container img:hover{
+    filter: brightness(0.75);       
+}
+.single-service-container h3{
+    color: rgba(0, 0, 0, 1);
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 48px;
+    text-align: center;
+    padding: 60px 0 20px 0;
+}
+.offer-grid-container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    padding-top: 40px;
+}
+.offer-grid-card{
+    line-height: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.offer-grid-card-icon-container{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.offer-grid-card-icon-container h4{
+    color: rgba(0, 0, 0, 1);
+    font-size: 23px;
+    font-weight: 600;
+    line-height: 36px;
+}
+.offer-grid-card p{
+    color: rgba(34, 34, 34, 1);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 30px;
+    padding: 10px 0 20px 0;
+}   
+.offer-grid-card-bottom-content img{
+    border-radius: 30px;
+}
+.single-service-list{
+    padding-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px 30px;
+}
+.single-service-list li{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.single-service-green-circle{
+    width: 36px;
+    height: 36px;
+    background: rgba(0, 208, 97, 1);
+    border-radius: 36px;   
+    box-shadow: 0px 8px 15px -4px rgba(0, 208, 97, 0.8); 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.single-service-list li p{
+    max-width: calc(100% - 51px);
+    width: 100%;
+    color: rgba(34, 34, 34, 1);
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 30px;
+}
+/************************ 41. Residence Panels CSS ***************************/
+.residence-panels-container{
+    max-width: 1320px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 100px 15px;
+    display: flex;
+    align-items: flex-start;
+    gap: 30px;
+}
+.residence-panels-left-container{
+    max-width: calc(100% - 440px);
+    width: 100%;
+}
+.residence-panels-img-wrapper{
+    line-height: 0;
+    overflow: hidden;      
+    border-radius: 20px;
+    margin: 30px 0;
+}
+.residence-panels-img1{
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+}
+.residence-panels-para{
+    color: rgba(34, 34, 34, 1);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 30px;
+}
+.residence-panels-para1{
+    padding-top: 16px;
+}
+.residence-panels-left-container h3{
+    color: rgba(0, 0, 0, 1);
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 48px;
+    padding: 30px 0 10px 0;
+}
+.residence-panels-list{
+    padding-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.residence-panels-list li{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.residence-panels-list li p{
+    max-width: calc(100% - 51px);
+    width: 100%;
+    color: rgba(34, 34, 34, 1);
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 30px;
+}
+.residence-panels-right-container{
+    max-width: 410px;
+    width: 100%;
+    position: sticky;
+    top: 120px;
+}
+.our-all-service-container{
+    padding-bottom: 40px;
+}
+.our-all-service-heading{
+    background: #000;
+    padding: 24px;
+}
+.our-all-service-heading h2{
+    color: #FFF;
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 48px;
+    text-align: center;
+}
+.dashboard-menu{
+    background: rgba(168, 169, 173, 0.1);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.dashboard-menu li{
+    background: #FFF;
+    padding: 18px 15px;
+    transition: background-color 0.3s ease-in-out;
+}
+.dashboard-menu li:hover{
+    background-color: #000;
+}
+.dashboard-menu li.active{
+    background-color: rgba(0, 208, 97, 1);
+}
+.dashboard-menu li a{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.dashboard-menu li a p{
+    color: rgba(0, 0, 0, 1);
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 24px;
+    transition: color 0.3s ease-in-out;
+}
+.dashboard-menu li.active a p, .dashboard-menu li:hover a p{
+    color: #FFF;
+}
+.dashboard-menu li a img{
+    filter: brightness(0) saturate(100%) invert(0%) sepia(100%) saturate(16%) hue-rotate(246deg) brightness(98%) contrast(105%);
+}
+.dashboard-menu li:hover a img, .dashboard-menu li.active a img{
+    filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(341deg) brightness(104%) contrast(101%);
+}
+/************************ 42. Projects-1 CSS ***************************/
+.projects-container {
+    padding: 100px 15px;
+}
+.projects-container .projects-para {
+    text-align: center;
+}
+.projects-container h2 {
+    text-align: center;
+    padding: 10px 0 60px 0;
+}
+.projects-card {
+    position: relative;
+    overflow: hidden;
+    line-height: 0;
+    cursor: pointer;
+    margin: 0 15px;
+}
+.projects-card2{
+    margin: 0;
+}
+.project-main-img {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s ease;
+}
+.projects-card:hover .project-main-img {
+    transform: scale(1.2);
+}
+.projects-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 208, 97, 0.0), rgba(0, 208, 97, 0.6));
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+.projects-card:hover .projects-overlay {
+    opacity: 1;
+}
+.project-card-img {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.4s ease;
+    transform: translateY(30px);
+}
+.projects-card:hover .project-card-img {
+    opacity: 1;
+    transform: translateY(0);
+}
+.project-card-content p {
+    color: rgba(34, 34, 34, 1);
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 24px;
+    position: absolute;
+    top: 4px;
+    left: 10px;
+}
+.project-card-content h3 {
+    color: rgba(0, 0, 0, 1);
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 32px;
+    position: absolute;
+    top: 37px;
+    left: 10px;
+}
+/************************ 43. Projects-2 CSS ***************************/
+.projects-container2 .projects-para{
+    text-align: center;
+    padding-bottom: 10px;
+}
+.projects-card-container3{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    line-height: 0;
+}
+.projects-card2{
+    position: relative;
+    display: block;
+}
+.projects-img{
+    width: 100%;
+    height: auto;
+}
+.projects-overlay-wrapper{
+    position: absolute;
+    inset: 0;
+    padding: 20px; 
+    pointer-events: none;
+}
+.projects-overlays{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 208, 97, 0.65);
+    transform: scale(0);
+    transition: all 0.6s ease;
+}
+.projects-card2:hover .projects-overlays{
+    transform: scale(1);
+}
+.projects-content{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+    color: #FFFFFF;
+}
+.projects-content *{
+    white-space: nowrap; 
+}
+.projects-content h3{
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 44px;
+}
+.projects-content p{
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+} 
+/************************ 44. Single Projects-1 CSS ***************************/
+.projects-container2{
+    max-width: 1320px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 100px 15px;
+}
+.projects-container2 h2{
+    text-align: center;
+    padding-bottom: 60px;
+}
+.projects-card-container2{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 123px;
+}
+/************************ 45. Single Projects-2 CSS ***************************/
+.single-project2-container{
+    max-width: 1320px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 100px 15px 0 15px;
+    display: flex;
+    align-items: flex-start;
+    gap: 30px;
+}
+.single-project2-left-container{
+    max-width: 410px;
+    width: 100%;
+    position: sticky;
+    top: 120px;
+}
+.single-project-list3{
+    padding-bottom: 30px;
+}
+.single-project2-right-container{
+    max-width: calc(100% - 440px);
+    width: 100%;
+}
+.single-project2-right-container h2{
+    padding-bottom: 10px;    
+}
+.single-project2-para2{
+    padding-top: 24px;
+}
+.single-project2-img-wrapper{
+    line-height: 0;
+    overflow: hidden;      
+    border-radius: 20px;
+    margin: 40px 0;
+}
+.single-project2-img1{
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+}
+.single-project2-right-container h3{
+    color: rgba(0, 0, 0, 1);
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 48px;
+    padding: 24px 0;
+}
+.single-projects2-autoplay{
+    margin: 0 -15px;
+}
+.single-projects2-autoplay .slick-slide{
+    padding: 0 15px;
+}
+.single-projects2-autoplay img{
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: filter 0.6s ease;
+}
+.slide-item:hover img{
+    filter: brightness(0.75);
+}
+/************************ 46. Portfolio CSS ***************************/
+.portfolio-container{
+    max-width: 1320px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 100px 15px;
+}
+.portfolio-grid-container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+.portfolio-card{
+    position: relative;
+    display: block;
+    overflow: hidden;
+    box-shadow: 0px 0px 10px 2px rgba(197, 197, 197, 0.5);
+    border-radius: 8px;
+    cursor: pointer;
+    line-height: 0;
+}
+.portfolio-img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.4s ease;
+}
+.portfolio-card:hover .portfolio-img{
+    filter: brightness(0.80);
+    transform: translateY(-60px);
+}
+.portfolio-card h2{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 18px 10px;
+    background: #000000;
+    transform: translateY(100%);
+    transition: all 0.4s ease;
+    color: rgba(0, 208, 97, 1);
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 30px;
+    text-align: center;
+}
+.portfolio-card h2:hover{
+    background: rgba(0, 208, 97, 1);
+    color: #000000;
+}
+.portfolio-card:hover h2{
+    transform: translateY(0%);
+}
+/************************ 47. Portfolio Details CSS ***************************/
+.portfolio-details-container{
+    max-width: 1320px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 100px 15px;
+    display: flex;
+    align-items: flex-start;
+    gap: 30px;
+}
+.portfolio-details-left-container{
+    max-width: calc(100% - 440px);
+    width: 100%;
+    line-height: 0;
+}
+.portfolio-img-wrapper{
+    line-height: 0;
+    border-radius: 30px;
+    overflow: hidden;
+    display: inline-block;
+}
+.portfolio-details-img1{
+    transform-origin: center;
+    width: 100%;
+    height: auto;
+}
+.portfolio-details-left-container h2{
+    padding: 30px 0 20px 0;
+}
+.portfolio-details-para{
+    color: rgba(34, 34, 34, 1);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 30px;
+}
+.portfolio-details-para1{
+    padding-top: 20px;
+}
+.portfolio-details-left-container h3{
+    color: rgba(0, 0, 0, 1);
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 48px;
+    padding: 30px 0 20px 0;
+}
+.portfolio-details-list{
+    padding: 30px 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px 30px;
+}
+.portfolio-details-list li{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.portfolio-details-list li p{
+    max-width: calc(100% - 51px);
+    width: 100%;
+    color: rgba(34, 34, 34, 1);
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 30px;
+}
+.video-container2{
+    margin: 0 !important;
+}
+.portfolio-details-right-container{
+    max-width: 410px;
+    width: 100%;
+    position: sticky;
+    top: 120px;
+}  
+.portfolio-information-container{
+    border: 1px solid rgba(168, 169, 173, 1);
+    padding: 30px;
+    border-radius: 30px;
+    margin-bottom: 30px;
+}
+.portfolio-information-container h2{
+    color: rgba(0, 0, 0, 1);
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 42px;
+}
+/************************ 48. Blog1 CSS ***************************/
+.latest-news-col{
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+.blog1-ellipsis-text{
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.blog-pagination{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding-top: 60px;
+}
+.blog-pagination2{
+    padding-top: 26px;
+}
+.blog-pagination a{
+    max-width: 60px;
+    width: 100%;
+    height: 60px;
+    background: rgba(255, 255, 255, 1);
+    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(0, 0, 0, 1);
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 24px;
+    border: 2px solid rgba(245, 246, 247, 1);
+    border-radius: 30px;
+    transition: all 0.3s ease-in-out;
+}
+.blog-pagination .blog-pagination-active, .blog-pagination a:hover{
+    background: #000;
+    color: #FFF;
+    border: none;
+}
+.blog-pagination .blog-pagination-arrows{
+    background: rgba(245, 246, 247, 1);
+}
+.blog-pagination .blog-pagination-arrows:hover img{
+    filter: brightness(0) saturate(100%) invert(100%) sepia(2%) saturate(819%) hue-rotate(116deg) brightness(100%) contrast(94%);
+}
+/************************ 49. Blog2 CSS ***************************/
+.blog-2-left-right-section{
+    display: flex;
+    align-items: flex-start;
+    gap: 30px;
+}
+.brian-smith-container h3{
+    color: rgba(255, 255, 255, 1);
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 48px;
+}
+/************************ 50. Single Blog CSS ***************************/
+.single-blog-container{
+    max-width: 1320px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 100px 15px 0 15px;
+    display: flex;
+    align-items: flex-start;
+    gap: 30px;
+}
+.single-blog-left-container{
+    max-width: calc(100% - 440px);
+    width: 100%;
+}
+.single-blog-person-date-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    padding-top: 20px;
+}
+.single-blog-person-container{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.single-blog-person-container p{
+    color: rgba(34, 34, 34, 1);
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 24px;
+}
+.single-blog-date-container{
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+.single-blog-date-content, .single-blog-comment-content{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.single-blog-date-content p, .single-blog-comment-content p{
+    color: rgba(34, 34, 34, 1);
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 24px;
+}
+.single-blog-img1{
+    border-radius: 30px;
+    margin: 40px 0;
+    width: 100%;
+}
+.single-blog-para{
+    color: rgba(34, 34, 34, 1);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 30px;
+}
+.single-blog-para1{
+    padding-top: 20px;
+}
+.quotation-container{
+    background: rgba(0, 208, 97, 0.1);
+    border-radius: 20px;
+    padding: 30px;
+    margin: 40px 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 30px;
+}
+.quotation-icon{
+    max-width: 80px;
+    width: 100%;
+}
+.quotation-content{
+    max-width: calc(100% - 110px);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.quotation-content h3{
+    color: rgba(0, 0, 0, 1);
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 48px;
+}
+.quotation-hr-line-content{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.quotation-hr-line-content .quotation-hr-line{
+    background: rgba(0, 0, 0, 1);
+    width: 100px;
+    height: 2px;
+}
+.quotation-hr-line-content p{
+    color: rgba(0, 208, 97, 1);
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 24px;
+}
+.single-blog-image-container{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+.single-blog-image-container img{
+    width: 100%;
+    border-radius: 30px;
+}
+.single-blog-left-container-h3{
+    color: rgba(0, 0, 0, 1);
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 48px;
+    padding: 60px 0 20px 0;
+}
+.single-blog-list{
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.single-blog-list li{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.single-blog-list li p{
+    color: rgba(34, 34, 34, 1);
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 30px;
+}
+.video-container {
+    position: relative;
+    width: 100%;
+    max-width: 850px;
+    margin: auto;
+    aspect-ratio: 850 / 550; 
+    line-height: 0;
+    margin: 40px 0;
+}
+.video-thumbnail,
+.responsive-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 30px;
+}
+.single-blog-video-btn {
+    width: 80px;
+    height: 80px;
+    background: #FFF;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    z-index: 2;
+}
+.single-blog-hr-line{
+    width: 100%;
+    height: 2px;
+    background: rgba(245, 246, 247, 1);
+    margin: 40px 0;
+}
+.single-blog-buttons-icons-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+.single-blog-buttons-container{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.single-blog-buttons-container .single-blog-buttons{
+    background: rgba(245, 246, 247, 1);
+    padding: 18px 20px;
+    color: rgba(0, 0, 0, 1);
+    font-size: 18px;    
+    font-weight: 500;
+    line-height: 24px;
+    transition: all 0.3s ease-in-out;
+}
+.single-blog-buttons-container .single-blog-buttons:hover{
+    color: rgba(245, 246, 247, 1);
+    background: rgba(0, 0, 0, 1);
+    border-radius: 8px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.07);
+}
+.single-blog-icons-container{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.single-blog-icons-container .single-blog-icons{
+    border: 2px solid rgba(245, 246, 247, 1);
+    background: rgba(255, 255, 255, 1);
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+.single-blog-icons-container .single-blog-icons:hover{
+    background: rgba(0, 0, 0, 1);
+    border: none;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.07);
+}
+.single-blog-icons-container .single-blog-icons:hover img{
+    filter: brightness(0) saturate(100%) invert(95%) sepia(1%) saturate(2367%) hue-rotate(198deg) brightness(106%) contrast(94%);
+}
+.single-blog-prev-next-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+.single-blog-prev-container, .single-blog-next-container{
+    max-width: 350px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.single-blog-next-container{
+    align-items: flex-end;
+}
+.previous-text, .next-text{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transform: translateX(0);
+    transition: all 0.3s ease-in-out;
+}
+.previous-text:hover{
+    transform: translateX(5px);
+}
+.next-text:hover{
+    transform: translateX(-5px);
+}
+.previous-text p, .next-text p{
+    color: rgba(168, 169, 173, 1);
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 1px;
+}
+.single-blog-prev-container .prev-para, .single-blog-next-container .next-para{
+    color: rgba(0, 0, 0, 1);
+    font-size: 24px;
+    font-weight: 500;   
+    line-height: 32px;
+    transition: all 0.3s ease-in-out;
+}
+.single-blog-next-container .next-para{
+    text-align: right;
+}
+.single-blog-prev-container .prev-para:hover, .single-blog-next-container .next-para:hover{
+    color: rgba(0, 208, 97, 1);
+}
+.leave-a-comment-text{
+    color: rgba(0, 0, 0, 1);
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 48px;
+    padding: 60px 0 30px 0;
+}
+.single-blog-input-field-container{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+.single-blog-input-field{
+    border: none;
+    outline: none;
+    border-bottom: 2px solid rgba(245, 246, 247, 1);
+    padding-bottom: 10px;
+    color: rgba(168, 169, 173, 1);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 30px;
+    transition: all 0.3s ease-in-out;
+}
+.single-blog-textarea-field{
+    resize: none;
+    width: 100%;
+    padding: 30px 0 50px 0;
+}  
+.single-blog-input-field::placeholder{
+    color: rgba(168, 169, 173, 1);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 30px;
+}
+.single-blog-input-field:focus{
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+}
+.single-blog-checkbox-container{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 30px 0;
+}
+.single-blog-checkbox{
+    appearance: none;       
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(168, 169, 173, 1);
+    background-color: #FFF;
+    cursor: pointer;
+    border-radius: 6px; 
+    position: relative; 
+}
+.single-blog-checkbox:checked::after{
+    content: "✔"; 
+    color: white;
+    font-size: 14px;
+    position: absolute;
+    top: -2px;
+    left: 2px;
+}
+.single-blog-checkbox:checked{
+    background-color: rgba(0, 208, 97, 1);
+    border-color: rgba(0, 208, 97, 1);
+    color: #FFF;
+}
+.single-blog-checkbox-container p{
+    color: rgba(0, 0, 0, 1);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+}
+.leave-a-comment-btn{
+    width: 209px;
+}
+.single-blog-right-container{
+    max-width: 410px;
+    width: 100%;
+    position: sticky;
+    top: 120px;
+}
+.search-input-field-container{
+    border: 2px solid rgba(245, 246, 247, 1);
+    border-radius: 40px;
+    background: rgba(255, 255, 255, 1);
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: all 0.3s ease-in-out;
+}
+.search-input-field-container:focus-within{
+    box-shadow: 0 4px 10px rgba(200, 200, 200, 0.3);
+}
+.search-icon{
+    background: rgba(245, 246, 247, 1);
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.search-input-field{
+    border: none;
+    outline: none;
+    color: rgba(168, 169, 173, 1);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 24px;
+}
+.search-input-field::placeholder{
+    color: rgba(168, 169, 173, 1);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 24px;
+}
+.brian-smith-container{
+    position: relative;
+    background-color: rgba(0, 208, 97, 1); 
+    border-radius: 30px;
+    padding: 120px 30px 30px 30px;
+    margin-top: 140px;
+}
+.brian-smith-container::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url('../images/single-blog/single-blog-img5.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border-radius: 28px;
+}
+.single-blog-person2{
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+}
+.brian-smith-content{
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.brian-smith-container h2{
+    color: rgba(255, 255, 255, 1);
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 48px;
+}
+.brian-smith-para1{
+    color: rgba(255, 255, 255, 1);
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    text-transform: uppercase;
+}
+.brian-smith-para2{
+    color: rgba(255, 255, 255, 1);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: center;
+    padding: 15px 0;
+}
+.brian-smith-social-icons{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.brian-smith-social-icons a{
+    background: rgba(255, 255, 255, 0.25);
+    width: 48px;
+    height: 48px;
+    border-radius: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease-in-out;
+}
+.brian-smith-social-icons a:hover{
+    background: #FFFFFF;
+}
+.brian-smith-social-icons a:hover img{
+    filter: brightness(0) saturate(100%) invert(50%) sepia(47%) saturate(2218%) hue-rotate(112deg) brightness(103%) contrast(101%);
+}
+.post-container{
+    margin: 40px 0;
+    border: 2px solid rgba(245, 246, 247, 1);
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 1);
+    padding: 30px;
+}
+.post-container h3{
+    color: rgba(0, 0, 0, 1);
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 36px;
+    padding-bottom: 30px;
+}
+.post-card{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.post-image{
+    max-width: 96px;
+    width: 100%;
+    line-height: 0;
+}
+.post-image img{
+    border-radius: 10px;
+}
+.post-content{
+    max-width: calc(100% - 111px);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.post-content span{
+    color: rgba(168, 169, 173, 1);
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 18px;
+}
+.post-content a{
+    color: rgba(0, 0, 0, 1);
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 24px;
+    transition: all 0.3s ease-in-out;
+}
+.post-content a:hover{
+    color: rgba(0, 208, 97, 1);
+}
+.post-hr-line{
+    background: rgba(245, 246, 247, 1);
+    width: 100%;
+    height: 2px;
+    margin: 20px 0;
+}
+.call-container{
+    position: relative;
+    background-image: url('../images/single-blog/single-blog-img6.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border-radius: 30px;
+}  
+.call-container::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url('../images/single-blog/single-blog-call-img.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border-radius: 30px;
+} 
+.call-wrapper{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 200px 40px 40px 40px;
+}
+.single-blog-white-circle{
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.call-paras{
+    padding: 20px 0;
+}
+.call-paras p{
+    color: rgba(255, 255, 255, 1);
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 30px;
+    text-align: center; 
+}
+.call-container a{
+    color: rgba(255, 255, 255, 1);
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 48px;
+    transition: all 0.3s ease-in-out;
+}
+.call-container a:hover{
+    color: rgba(0, 208, 97, 1);
+}
+/************************ 51. Single Blog Latest News CSS ***************************/
+.latest-news-container2 h2{
+    padding: 0 0 60px 0;
+}
+/************************ 52. Single Blog3 CSS ***************************/
+.blog-details3-container{
+    max-width: 880px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 100px 15px;
+}
+/************************ 53. Contact CSS ***************************/
+.contact-container{
+    max-width: 1320px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 100px 15px;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+.contact-left-container, .contact-right-container{
+    max-width: 630px;
+    width: 100%;
+}
+.contact-left-container h2{
+    padding: 10px 0 30px 0;
+}
+.contact-left-container .contact-left-container-para2{
+    color: rgba(34, 34, 34, 1);
+    font-size: 18px;    
+    font-weight: 400;
+    line-height: 30px;
+}
+.contact-left-icon-container{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 40px 0;
+}
+.contact-left-icon{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.contact-icon{
+    width: 60px;
+    height: 60px;   
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.contact-content p{
+    color: rgba(168, 169, 173, 1);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+}
+.contact-content a{
+    color: rgba(0, 0, 0, 1);
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    transition: all 0.3s ease-in-out;
+}
+.contact-content a:hover{
+    color: rgba(0, 208, 97, 1);
+}
+.contact-social-icons{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.contact-social-icons a{
+    transition: all 0.3s ease-in-out;
+}
+.contact-social-icons a:hover{
+    filter: brightness(0) saturate(100%) invert(73%) sepia(50%) saturate(4505%) hue-rotate(101deg) brightness(91%) contrast(105%);
+    transform: translateY(-4px);
+}
+.contact-right-container{
+    background: rgba(168, 169, 173, 0.1);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+.contact-input-field-container{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.contact-input-field{
+    background: rgba(255, 255, 255, 1);
+    padding: 15px 20px;
+    border: none;
+    outline: none;
+    font-size: 18px;    
+    font-weight: 400;
+    line-height: 30px;
+    color: rgba(34, 34, 34, 1);
+    transition: all 0.4s ease-in-out;
+}
+.contact-input-field:focus{
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+.contact-input-field::placeholder{
+    color: rgba(34, 34, 34, 1);
+    font-size: 18px;    
+    font-weight: 400;
+    line-height: 30px;
+}
+.contact-textarea-field{
+    height: 120px;
+    resize: none;
+}
+.submit-now-btn{
+    width: 158px;
+}
+/************************ 54. Google Map CSS ***************************/
+.google-map{
+    width: 100%;
+    height: 750px;
+}
+/************************ 55. Custom Cursor CSS ****************************/
+.cursor {
+    position: fixed;
+    top: -10px;
+    left: -10px;
+    width: 25px;
+    height: 25px;
+    border: 2px solid rgba(0, 208, 97, 1);
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s ease-in-out, height 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    z-index: 99999988;
+}
+a:hover~.cursor,
+.cursor.hover {
+    width: 50px;
+    height: 50px;
+    background-color: rgba(0, 208, 97, 0.3);
+}
+/************************ 56. Scroll To Top CSS ***************************/
+.scroll-to-top-button {
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    z-index: 200;
+    height: 50px;
+    width: 50px;
+    background-color: rgba(0, 208, 97, 1);
+    transform: rotate(-45deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s ease-out;
+}
+.scroll-to-top-button:hover {
+    animation: animate-pulse 3s linear infinite;
+}
+@keyframes animate-pulse {
+    0% {
+        box-shadow: 0 0 #41db89, 0 0 #00D061;
+    }
+    40% {
+        box-shadow: 0 0 0 50px #ff6d4a00, 0 0 #00D061;
+    }
+    80% {
+        box-shadow: 0 0 0 50px #ff6d4a00, 0 0 0 30px #ff6d4a00;
+    }
+    100% {
+        box-shadow: 0 0 #ff6d4a00, 0 0 0 30px #ff6d4a00;
+    }
+}
+.scroll-to-top-button img {
+    transform: rotate(-45deg);
+}

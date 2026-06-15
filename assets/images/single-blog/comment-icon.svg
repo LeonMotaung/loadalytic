@@ -1,0 +1,5 @@
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24.000000" height="24.000000" fill="none">
+	<rect id="Frame" width="24.000000" height="24.000000" x="0.000000" y="0.000000" fill="rgb(255,255,255)" fill-opacity="0" />
+	<path id="Vector" d="M0 0L24 0L24 24L0 24L0 0Z" fill-rule="nonzero" />
+	<path id="Vector" d="M4.3 16.1C1.976 12.663 2.874 8.22797 6.4 5.72597C9.926 3.22497 14.99 3.42997 18.245 6.20597C21.5 8.98297 21.94 13.472 19.274 16.707C16.608 19.942 11.659 20.922 7.7 19L3 20L4.3 16.1Z" fill-rule="nonzero" stroke="rgb(34,34,34)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+</svg>
