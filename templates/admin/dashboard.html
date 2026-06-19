@@ -1,0 +1,379 @@
+{% extends "admin/base.html" %}
+
+{% block head %}
+<style>
+    /* Custom chart height override */
+    .chart-container {
+        position: relative;
+        width: 100%;
+        height: 200px;
+    }
+</style>
+{% endblock %}
+
+{% set active_tab = 'dashboard' %}
+
+{% block content %}
+<div class="dashboard-grid">
+
+    <!-- Row 1: Line Chart (Spans 2 columns) -->
+    <div class="panel {% if not logged_in %}restricted-panel{% endif %}" style="grid-column: 1 / 3;">
+        {% if not logged_in %}
+        <div class="restricted-overlay">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+            <div class="restricted-overlay-title">Access Restricted</div>
+            <div class="restricted-overlay-text">Please sign in to view historical grid statistics.</div>
+        </div>
+        {% endif %}
+        <div class="panel-header">
+            <div class="panel-title">Historical Energy Usage <span class="panel-subtitle">(Last 7 Days)</span></div>
+            <button class="dropdown">Hourly ▾</button>
+        </div>
+        <div class="chart-container">
+            <canvas id="historicalLoadChart"></canvas>
+        </div>
+    </div>
+
+    <!-- Row 1: Admin Authentication / Simulation Tools (Spans 1 column) -->
+    <div class="panel">
+        {% if not logged_in %}
+        <div class="panel-header">
+            <div class="panel-title">Admin Authentication</div>
+        </div>
+        <form action="/admin/login" method="POST">
+            <div class="input-group">
+                <label>Username</label>
+                <input type="text" name="username" class="form-input" required placeholder="admin">
+            </div>
+            <div class="input-group">
+                <label>Password</label>
+                <input type="password" name="password" class="form-input" required placeholder="admin123">
+            </div>
+            <div class="input-group">
+                <label>Role</label>
+                <select name="role" class="form-select">
+                    <option value="Admin">Admin</option>
+                    <option value="System Engineer">System Engineer</option>
+                    <option value="Operator">Operator</option>
+                </select>
+            </div>
+            <button type="submit" class="btn-submit">Sign In</button>
+        </form>
+        {% else %}
+        <div class="panel-header">
+            <div class="panel-title">Simulation & Grid Controls</div>
+        </div>
+        <div class="sim-controls-grid">
+            <div class="user-profile-header">
+                <div class="user-avatar">A</div>
+                <div class="user-info">
+                    <div class="user-name">Authorized Administrator</div>
+                    <div class="user-role">{{ session.get('admin_role', 'Admin') }}</div>
+                </div>
+            </div>
+            
+            <form action="/admin/simulate-usage" method="POST">
+                <button type="submit" class="btn-submit" style="background-color: var(--neon-green); margin-bottom: 8px; display: flex; align-items: center; justify-content: center; gap: 6px;">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7 2v11h3v9l7-12h-4l4-8z"/>
+                    </svg>
+                    Fluctuate Client Loads
+                </button>
+            </form>
+
+            <form action="/admin/set-grid-status" method="POST" class="input-group" style="margin-bottom: 8px;">
+                <label>Update Grid Health State</label>
+                <div style="display: flex; gap: 8px;">
+                    <select name="grid_status" class="form-select" style="flex: 1;">
+                        <option value="Active" {% if grid_status == 'Active' %}selected{% endif %}>Stable / Active</option>
+                        <option value="Warning" {% if grid_status == 'Warning' %}selected{% endif %}>Warning</option>
+                        <option value="Critical" {% if grid_status == 'Critical' %}selected{% endif %}>Critical</option>
+                        <option value="Loadshedding" {% if grid_status == 'Loadshedding' %}selected{% endif %}>Loadshedding</option>
+                    </select>
+                    <button type="submit" class="btn-secondary" style="padding: 5px 10px;">Apply</button>
+                </div>
+            </form>
+
+            <a href="/admin/logout" class="btn-danger" style="display: block; text-align: center; text-decoration: none; padding: 10px; border-radius: 6px;">
+                Log Out Session
+            </a>
+        </div>
+        {% endif %}
+    </div>
+
+    <!-- Row 2: Clients Table (Spans 1 column) -->
+    <div class="panel {% if not logged_in %}restricted-panel{% endif %}">
+        {% if not logged_in %}
+        <div class="restricted-overlay">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+            <div class="restricted-overlay-title">Access Restricted</div>
+        </div>
+        {% endif %}
+        <div class="panel-header">
+            <div class="panel-title">Clients</div>
+            <a href="/admin/users" class="dropdown" style="text-decoration: none;">Manage ➔</a>
+        </div>
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Client Name</th>
+                    <th>Plan</th>
+                    <th>Usage</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users[:3] %}
+                <tr>
+                    <td>{{ user.name }}</td>
+                    <td>{{ user.plan }}</td>
+                    <td>{{ user.usage_kwh|int }} kWh</td>
+                    <td>
+                        <span class="status-badge {% if user.status == 'Suspended' %}suspended{% endif %}">
+                            {{ user.status }}
+                        </span>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Row 2: Client Consumption Comparison (Spans 2 columns) -->
+    <div class="panel {% if not logged_in %}restricted-panel{% endif %}" style="grid-column: 2 / 4; grid-row: 2 / 3;">
+        {% if not logged_in %}
+        <div class="restricted-overlay">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+            <div class="restricted-overlay-title">Access Restricted</div>
+        </div>
+        {% endif %}
+        <div class="panel-header">
+            <div class="panel-title">Client Consumption Comparison</div>
+            <button class="dropdown">Weekly ▾</button>
+        </div>
+        <div class="chart-container">
+            <canvas id="clientComparisonChart"></canvas>
+        </div>
+    </div>
+
+    <!-- Row 3: News Feed Table (Spans 1 column) -->
+    <div class="panel {% if not logged_in %}restricted-panel{% endif %}">
+        {% if not logged_in %}
+        <div class="restricted-overlay">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+            <div class="restricted-overlay-title">Access Restricted</div>
+        </div>
+        {% endif %}
+        <div class="panel-header">
+            <div class="panel-title">News Feed</div>
+            <a href="/admin/news" class="dropdown" style="text-decoration: none;">Manage ➔</a>
+        </div>
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Headline</th>
+                    <th>Date</th>
+                    <th>Severity</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in news[:2] %}
+                <tr>
+                    <td style="max-width: 120px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                        {{ item.headline }}
+                    </td>
+                    <td>{{ item.date }}</td>
+                    <td><span class="news-badge {{ item.severity }}">{{ item.severity }}</span></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Row 3: Dispatch Email Form (Spans 1 column) -->
+    <div class="panel {% if not logged_in %}restricted-panel{% endif %}">
+        {% if not logged_in %}
+        <div class="restricted-overlay">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+            <div class="restricted-overlay-title">Access Restricted</div>
+        </div>
+        {% endif %}
+        <div class="panel-header">
+            <div class="panel-title">Dispatch Email</div>
+            <a href="/admin/marketing" class="dropdown" style="text-decoration: none;">Manager ➔</a>
+        </div>
+        <form action="/admin/marketing/send" method="POST">
+            <div class="input-group">
+                <label>Subject</label>
+                <input type="text" name="subject" class="form-input" required>
+            </div>
+            <div class="input-group">
+                <label>Audience</label>
+                <select name="audience" class="form-select">
+                    <option value="All Clients">All Clients</option>
+                    <option value="Premium">Premium Tier</option>
+                    <option value="Basic">Basic Tier</option>
+                    <option value="Enterprise">Enterprise Tier</option>
+                    <option value="Suspended">Suspended Users</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label>Body</label>
+                <textarea name="body" class="form-textarea" required></textarea>
+            </div>
+            <div class="form-inline">
+                <select class="form-select">
+                    <option>Status</option>
+                </select>
+                <button type="submit" class="btn-submit">Send</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Row 3: Total Global Analytics (Spans 1 column, Column 3 / 4, Row 3 / 4) -->
+    <div class="panel {% if not logged_in %}restricted-panel{% endif %}" style="grid-column: 3 / 4; grid-row: 3 / 4;">
+        {% if not logged_in %}
+        <div class="restricted-overlay">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+            <div class="restricted-overlay-title">Access Restricted</div>
+        </div>
+        {% endif %}
+        <div class="panel-header">
+            <div class="panel-title">Total Global Analytics</div>
+        </div>
+        <div class="analytics-block">
+            <div class="stat-row">
+                <div class="stat-item">
+                    <div class="stat-label">Total MWh</div>
+                    <div class="stat-value" id="analyticTotalMwh">{{ total_mwh }} <span class="unit">M</span></div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">Active Clients</div>
+                    <div class="stat-value" id="analyticActiveClients">{{ active_clients }}</div>
+                </div>
+            </div>
+            <div class="stat-row">
+                <div class="stat-item">
+                    <div class="stat-label">Network Status</div>
+                    <div class="stat-value active {% if grid_status == 'Warning' %}warning{% elif grid_status == 'Critical' or grid_status == 'Loadshedding' %}critical{% endif %}" id="analyticStatus">
+                        {{ grid_status }}
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">Revenue</div>
+                    <div class="stat-value" id="analyticRevenue">{{ revenue }} <span class="unit">M</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
+
+{% block scripts %}
+{% if logged_in %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // --- 1. Historical Load Chart (Line) ---
+        const lineCtx = document.getElementById('historicalLoadChart').getContext('2d');
+        const chartDates = JSON.parse('{{ chart_dates|safe }}');
+        const chartValues = JSON.parse('{{ chart_values|safe }}');
+
+        // Apply dark styles to match the mockup
+        const gridColor = '#1a1e26';
+        const neonGreen = '#00ff88';
+
+        new Chart(lineCtx, {
+            type: 'line',
+            data: {
+                labels: chartDates,
+                datasets: [{
+                    label: 'Grid Load (kWh)',
+                    data: chartValues,
+                    borderColor: neonGreen,
+                    backgroundColor: 'rgba(0, 255, 136, 0.05)',
+                    borderWidth: 2.5,
+                    fill: true,
+                    tension: 0.4,
+                    pointBackgroundColor: neonGreen,
+                    pointBorderColor: '#0d0f14',
+                    pointHoverRadius: 6,
+                    pointRadius: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    x: {
+                        grid: { color: gridColor },
+                        ticks: { color: '#8b9bb4', font: { size: 10 } }
+                    },
+                    y: {
+                        grid: { color: gridColor },
+                        ticks: { color: '#8b9bb4', font: { size: 10 } }
+                    }
+                }
+            }
+        });
+
+        // --- 2. Client Consumption Comparison Chart (Bar) ---
+        const barCtx = document.getElementById('clientComparisonChart').getContext('2d');
+        const clientNames = JSON.parse('{{ client_names|safe }}');
+        const clientValues = JSON.parse('{{ client_values|safe }}');
+
+        new Chart(barCtx, {
+            type: 'bar',
+            data: {
+                labels: clientNames,
+                datasets: [{
+                    data: clientValues,
+                    backgroundColor: 'rgba(0, 255, 136, 0.75)',
+                    hoverBackgroundColor: '#00ff88',
+                    borderRadius: 4,
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    x: {
+                        grid: { display: false },
+                        ticks: { color: '#8b9bb4', font: { size: 10 } }
+                    },
+                    y: {
+                        grid: { color: gridColor },
+                        ticks: { color: '#8b9bb4', font: { size: 10 } }
+                    }
+                }
+            }
+        });
+    });
+</script>
+{% endif %}
+{% endblock %}

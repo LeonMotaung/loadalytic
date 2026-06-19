@@ -1,0 +1,92 @@
+{% extends "admin/base.html" %}
+
+{% set active_tab = 'news' %}
+
+{% block content %}
+<div class="admin-split-layout">
+    
+    <!-- Left Column: News Bulletins List -->
+    <div class="panel">
+        <div class="panel-header">
+            <div class="panel-title">
+                Active Bulletins & Announcements
+                <span class="panel-subtitle">({{ news|length }} announcements broadcasted to clients)</span>
+            </div>
+        </div>
+        
+        {% if news|length == 0 %}
+        <div style="padding: 40px; text-align: center; color: var(--text-secondary);">
+            No bulletins currently posted on the KragBridge portal.
+        </div>
+        {% else %}
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th style="width: 60%;">Headline Description</th>
+                    <th>Date Published</th>
+                    <th>Category Severity</th>
+                    <th style="text-align: right;">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in news %}
+                <tr>
+                    <td style="font-weight: 500; padding-right: 15px;">{{ item.headline }}</td>
+                    <td>{{ item.date }}</td>
+                    <td><span class="news-badge {{ item.severity }}">{{ item.severity }}</span></td>
+                    <td style="text-align: right;">
+                        <form action="/admin/news/delete/{{ item.id }}" method="POST" onsubmit="return confirm('Delete this bulletin? It will be removed for all resellers.');">
+                            <button type="submit" class="action-btn delete">Remove</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% endif %}
+    </div>
+
+    <!-- Right Column: Publish Form -->
+    <div class="panel" style="align-self: start;">
+        <div class="panel-header">
+            <div class="panel-title">Publish System Bulletin</div>
+        </div>
+        <form action="/admin/news/add" method="POST">
+            <div class="input-group">
+                <label>Announcement Headline</label>
+                <textarea name="headline" class="form-textarea" required placeholder="Describe the announcement, e.g. Emergency load reduction in sector B from 18:00..." style="height: 120px;"></textarea>
+            </div>
+            
+            <div class="input-group">
+                <label>Bulletin Severity Category</label>
+                <select name="severity" class="form-select">
+                    <option value="Active">Active (Standard News)</option>
+                    <option value="Critical">Critical (Immediate System Alert)</option>
+                    <option value="Maintenance">Maintenance (Grid Downtime)</option>
+                    <option value="Promotion">Promotion (Tariff Deals)</option>
+                </select>
+            </div>
+            
+            <button type="submit" class="btn-submit" style="margin-top: 15px; display: flex; align-items: center; justify-content: center; gap: 6px;">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 8H4v8h8v-8zm1.5-3.5L12 6.5v11l1.5 2 2.5-3.5V8l-2.5-3.5zm6.5 7c0-2.5-1.5-4.5-3.5-5.5V16c2-.5 3.5-2.5 3.5-5z"/>
+                </svg>
+                Broadcast Headline
+            </button>
+        </form>
+        
+        <div style="margin-top: 25px; border-top: 1px solid var(--border-color); padding-top: 15px;">
+            <div class="panel-subtitle" style="font-size: 11px; margin-bottom: 8px; color: var(--text-secondary);">
+                Category Badges Preview:
+            </div>
+            <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                <span class="news-badge Active">Active</span>
+                <span class="news-badge Critical">Critical</span>
+                <span class="news-badge Maintenance">Maintenance</span>
+                <span class="news-badge Promotion">Promotion</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

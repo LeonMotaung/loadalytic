@@ -1,0 +1,139 @@
+{% extends "admin/base.html" %}
+
+{% set active_tab = 'marketing' %}
+
+{% block content %}
+<div class="admin-split-layout">
+    
+    <!-- Left Column: Sent Campaigns Queue -->
+    <div class="panel">
+        <div class="panel-header">
+            <div class="panel-title">
+                Marketing Campaign Log
+                <span class="panel-subtitle">({{ emails|length }} campaigns dispatched to database targets)</span>
+            </div>
+        </div>
+        
+        {% if emails|length == 0 %}
+        <div style="padding: 40px; text-align: center; color: var(--text-secondary);">
+            No marketing campaigns sent yet.
+        </div>
+        {% else %}
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Subject Title</th>
+                    <th>Target Audience</th>
+                    <th>Sent Timestamp</th>
+                    <th>Recipients</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for email in emails %}
+                <tr>
+                    <td style="font-weight: 500; max-width: 180px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                        <span title="{{ email.body|escape }}">{{ email.subject }}</span>
+                    </td>
+                    <td><span class="news-badge Promotion">{{ email.audience }}</span></td>
+                    <td>{{ email.sent_at }}</td>
+                    <td style="font-weight: 600;">{{ email.count }} clients</td>
+                    <td><span class="status-badge">Dispatched</span></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% endif %}
+    </div>
+
+    <!-- Right Column: Campaign Composer -->
+    <div class="panel" style="align-self: start;">
+        <div class="panel-header">
+            <div class="panel-title">Dispatch Campaign Email</div>
+        </div>
+        
+        <div class="input-group">
+            <label>Load Pre-made Template</label>
+            <select id="templateSelector" class="form-select" onchange="loadTemplate()">
+                <option value="custom">-- Write Custom Email --</option>
+                <option value="maintenance">Substation Maintenance Advisory</option>
+                <option value="tariff">Winter Peak Tariff Tariff Advisory</option>
+                <option value="rewards">Reseller Premium Rewards Promotion</option>
+            </select>
+        </div>
+
+        <form action="/admin/marketing/send" method="POST" id="emailForm">
+            <div class="input-group">
+                <label>Subject</label>
+                <input type="text" name="subject" id="emailSubject" class="form-input" required placeholder="Email Subject Title">
+            </div>
+
+            <div class="input-group">
+                <label>Audience Segment</label>
+                <select name="audience" id="emailAudience" class="form-select" onchange="updateAudienceCounter()">
+                    <option value="All Clients">All Clients ({{ counts['All Clients'] }} targets)</option>
+                    <option value="Basic">Basic Plan Tier ({{ counts['Basic'] }} targets)</option>
+                    <option value="Premium">Premium Plan Tier ({{ counts['Premium'] }} targets)</option>
+                    <option value="Enterprise">Enterprise Plan Tier ({{ counts['Enterprise'] }} targets)</option>
+                    <option value="Suspended">Suspended Users ({{ counts['Suspended'] }} targets)</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label>Email Message Body</label>
+                <textarea name="body" id="emailBody" class="form-textarea" required placeholder="Write the body of the email here..." style="height: 180px;"></textarea>
+            </div>
+
+            <button type="submit" class="btn-submit" id="sendBtn" style="display: flex; align-items: center; justify-content: center; gap: 6px;">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                </svg>
+                Dispatch Campaign
+            </button>
+        </form>
+    </div>
+
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // --- Mock Email Template Data ---
+    const templates = {
+        custom: {
+            subject: '',
+            body: ''
+        },
+        maintenance: {
+            subject: 'Important: Scheduled Substation Upgrades & Grid Maintenance',
+            body: 'Dear Valued Loadalytic Clients,\n\nPlease be advised that our primary KragBridge power substation will undergo vital hardware maintenance on Sunday from 02:00 AM to 06:00 AM.\n\nDuring this 4-hour window, resellers may experience intermittent load reductions. We advise pre-charging battery backups and planning operations accordingly.\n\nThank you for your cooperation.\n\nRegards,\nLoadalytic Grid Management Operations'
+        },
+        tariff: {
+            subject: 'Winter Peak Demand Tariffs Schedule Advisory',
+            body: 'Dear Client,\n\nAs we enter winter, please note that the peak-demand winter tariffs will become active starting next month. To minimize your network charges, we strongly recommend reducing high-current machinery usage during the primary peak hours: 17:30 to 20:00.\n\nYou can monitor your live daily metrics in your reseller dashboard.\n\nThank you for helping us maintain grid stability.\n\nRegards,\nKragBridge Reseller Relations'
+        },
+        rewards: {
+            subject: 'Exclusive Promotion: Earn Premium Energy Credits!',
+            body: 'Dear Reseller,\n\nWe are launching our load-shedding relief rewards! Any Premium tier clients who maintain their usage below 75% of their daily limits for 15 consecutive days will automatically receive a 10% credit rebate on their next invoice.\n\nAdditionally, referring new clients to the KragBridge platform will increase your daily maximum limit allocation by 500 kWh.\n\nVisit the portal for more details!\n\nBest Regards,\nLoadalytic Marketing Team'
+        }
+    };
+
+    // Load template into inputs
+    function loadTemplate() {
+        const val = document.getElementById('templateSelector').value;
+        const data = templates[val] || templates.custom;
+        
+        document.getElementById('emailSubject').value = data.subject;
+        document.getElementById('emailBody').value = data.body;
+    }
+
+    // Interactive Dispatch Animation
+    document.getElementById('emailForm').addEventListener('submit', function(e) {
+        const sendBtn = document.getElementById('sendBtn');
+        sendBtn.disabled = true;
+        sendBtn.innerHTML = 'Sending Campaign...';
+        sendBtn.style.backgroundColor = 'var(--neon-yellow)';
+        sendBtn.style.boxShadow = '0 0 10px rgba(255, 221, 87, 0.4)';
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loadalytic / KragBridge - Admin Panel</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Outfit:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+    {% block head %}{% endblock %}
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo-section" style="margin-bottom: 30px;">
+            <a href="/" title="Go to Website Home" style="display: block; width: 64px;">
+                <img src="/assets/images/header/logo.png" alt="Loadalytic Logo" style="width: 100%; height: auto; display: block;">
+            </a>
+        </div>
+        <div class="nav-indices">
+            <!-- Dashboard Tab -->
+            <a href="/admin/dashboard" class="nav-icon {% if active_tab == 'dashboard' %}active{% endif %}" title="Dashboard Overview">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="3" y="3" width="7" height="9" rx="1"/>
+                    <rect x="14" y="3" width="7" height="5" rx="1"/>
+                    <rect x="3" y="16" width="7" height="5" rx="1"/>
+                    <rect x="14" y="12" width="7" height="9" rx="1"/>
+                </svg>
+            </a>
+            <!-- Client Management Tab -->
+            <a href="/admin/users" class="nav-icon {% if active_tab == 'users' %}active{% endif %}" title="Client Directory">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                    <circle cx="9" cy="7" r="4"/>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                </svg>
+            </a>
+            <!-- News Bulletin Tab -->
+            <a href="/admin/news" class="nav-icon {% if active_tab == 'news' %}active{% endif %}" title="News Bulletins">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                    <path d="M16 8h2m-6 4h6m-6 4h6M6 8h4v8H6V8z"/>
+                </svg>
+            </a>
+            <!-- Marketing Center Tab -->
+            <a href="/admin/marketing" class="nav-icon {% if active_tab == 'marketing' %}active{% endif %}" title="Email Dispatch Center">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                    <polyline points="22,6 12,13 2,6"/>
+                </svg>
+            </a>
+        </div>
+        <div class="bottom-icons">
+            <a href="/" class="circle-icon" title="Return to Homepage">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+                </svg>
+            </a>
+            {% if logged_in %}
+            <a href="/admin/logout" class="circle-icon" title="Log Out" style="color: var(--neon-red);">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10.09 15.59L11.5 17l5-5-5-5-1.41 1.41L12.67 11H3v2h9.67l-2.58 2.59zM19 3H5c-1.11 0-2 .9-2 2v4h2V5h14v14H5v-4H3v4c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/>
+                </svg>
+            </a>
+            {% else %}
+            <a href="/admin" class="circle-icon" title="Log In">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12.65 10C11.83 7.67 9.61 6 7 6c-3.31 0-6 2.69-6 6s2.69 6 6 6c2.61 0 4.83-1.67 5.65-4H17v4h4v-4h2v-4H12.65zM7 14c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/>
+                </svg>
+            </a>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Header -->
+        <header class="top-header">
+            <div class="title-group" style="display: flex; align-items: center; gap: 10px;">
+                <img src="/assets/images/header/logo.png" alt="Loadalytic Logo" style="height: 32px; width: auto; display: block;">
+                <span class="title-main" style="font-weight: 300; opacity: 0.5;">/</span>
+                <span class="title-sub">KragBridge</span>
+            </div>
+            <div class="header-controls">
+                <span class="status-light {% if grid_status == 'Warning' %}warning{% elif grid_status == 'Loadshedding' or grid_status == 'Critical' %}critical{% endif %}"></span>
+                <span class="outfit-label">Outfit</span>
+            </div>
+        </header>
+
+        <!-- Dynamic Content block -->
+        {% block content %}{% endblock %}
+    </div>
+
+    <!-- Toast Notifications Container -->
+    <div class="toast-container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="toast-message {{ category }}">
+                        <span>
+                            {% if category == 'success' %}✓{% elif category == 'error' %}✗{% elif category == 'warning' %}⚠{% else %}i{% endif %}
+                        </span>
+                        <div>{{ message }}</div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+
+    <!-- Auto-hide toasts after 4 seconds -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const toasts = document.querySelectorAll('.toast-message');
+            toasts.forEach(toast => {
+                setTimeout(() => {
+                    toast.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                    toast.style.opacity = '0';
+                    toast.style.transform = 'translateY(-20px)';
+                    setTimeout(() => toast.remove(), 500);
+                }, 4000);
+            });
+        });
+    </script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>

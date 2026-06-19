@@ -1,0 +1,238 @@
+{% extends "admin/base.html" %}
+
+{% set active_tab = 'users' %}
+
+{% block content %}
+<div class="admin-full-layout">
+    
+    <div class="panel">
+        <div class="panel-header">
+            <div class="panel-title">
+                Client Directory
+                <span class="panel-subtitle">({{ users|length }} total clients registered on KragBridge grid)</span>
+            </div>
+            <button class="btn-submit" onclick="openAddModal()" style="width: auto; padding: 8px 15px;">
+                + Add Client
+            </button>
+        </div>
+
+        <div style="margin-bottom: 20px;">
+            <input type="text" id="clientSearch" class="form-input" placeholder="Search clients by name, email, or plan..." onkeyup="filterClients()">
+        </div>
+
+        <table class="data-table" id="clientsTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Client Name</th>
+                    <th>Email Address</th>
+                    <th>Plan Tier</th>
+                    <th>Usage / Limit</th>
+                    <th>Progress</th>
+                    <th>Status</th>
+                    <th style="text-align: right;">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                {% set pct = (user.usage_kwh / user.limit_kwh * 100)|int %}
+                <tr class="client-row">
+                    <td>#{{ user.id }}</td>
+                    <td class="client-name" style="font-weight: 500;">{{ user.name }}</td>
+                    <td class="client-email">{{ user.email }}</td>
+                    <td class="client-plan"><span class="news-badge {{ user.plan }}">{{ user.plan }}</span></td>
+                    <td>{{ user.usage_kwh|int }} / {{ user.limit_kwh|int }} <span style="font-size: 10px; color: var(--text-secondary);">kWh</span></td>
+                    <td>
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <span style="font-size: 11px; font-weight: 500; min-width: 25px;">{{ pct }}%</span>
+                            <div class="usage-bar-container">
+                                <div class="usage-bar {% if pct > 90 %}danger{% elif pct > 75 %}alert{% endif %}" style="width: {{ pct if pct <= 100 else 100 }}%;"></div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <span class="status-badge {% if user.status == 'Suspended' %}suspended{% endif %}">
+                            {{ user.status }}
+                        </span>
+                    </td>
+                    <td style="text-align: right;">
+                        <div style="display: flex; gap: 8px; justify-content: flex-end;">
+                            <button class="action-btn" onclick="openEditModal('{{ user.id }}', '{{ user.name|escape }}', '{{ user.email|escape }}', '{{ user.plan }}', '{{ user.limit_kwh }}', '{{ user.usage_kwh }}', '{{ user.status }}')">
+                                Edit
+                            </button>
+                            <form action="/admin/users/toggle/{{ user.id }}" method="POST" style="display: inline;">
+                                <button type="submit" class="action-btn">
+                                    {% if user.status == 'Active' %}Suspend{% else %}Activate{% endif %}
+                                </button>
+                            </form>
+                            <form action="/admin/users/delete/{{ user.id }}" method="POST" style="display: inline;" onsubmit="return confirm('Are you sure you want to completely remove this client from the loadgrid?');">
+                                <button type="submit" class="action-btn delete">
+                                    Delete
+                                </button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<!-- Modal: Add User -->
+<div class="modal-overlay" id="addUserModal">
+    <div class="modal-container">
+        <div class="modal-title-bar">
+            <span class="title-main" style="font-size: 16px;">Add Client / Reseller</span>
+            <button class="modal-close" onclick="closeAddModal()">&times;</button>
+        </div>
+        <div class="modal-body">
+            <form action="/admin/users/add" method="POST">
+                <div class="input-group">
+                    <label>Client / Company Name</label>
+                    <input type="text" name="name" class="form-input" required placeholder="e.g. Apex Industrial">
+                </div>
+                <div class="input-group">
+                    <label>Billing Email Address</label>
+                    <input type="email" name="email" class="form-input" required placeholder="name@domain.com">
+                </div>
+                <div class="form-inline">
+                    <div class="input-group">
+                        <label>Reseller Plan Tier</label>
+                        <select name="plan" class="form-select">
+                            <option value="Basic">Basic Tier</option>
+                            <option value="Premium">Premium Tier</option>
+                            <option value="Enterprise">Enterprise Tier</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label>Status</label>
+                        <select name="status" class="form-select">
+                            <option value="Active">Active Grid</option>
+                            <option value="Suspended">Suspended</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-inline">
+                    <div class="input-group">
+                        <label>Daily Limit (kWh)</label>
+                        <input type="number" name="limit_kwh" class="form-input" required min="1" placeholder="e.g. 500">
+                    </div>
+                    <div class="input-group">
+                        <label>Initial Load (kWh)</label>
+                        <input type="number" name="usage_kwh" class="form-input" min="0" placeholder="e.g. 0">
+                    </div>
+                </div>
+                <button type="submit" class="btn-submit" style="margin-top: 10px;">Provision Client</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modal: Edit User -->
+<div class="modal-overlay" id="editUserModal">
+    <div class="modal-container">
+        <div class="modal-title-bar">
+            <span class="title-main" style="font-size: 16px;">Update Client Details</span>
+            <button class="modal-close" onclick="closeEditModal()">&times;</button>
+        </div>
+        <div class="modal-body">
+            <form id="editForm" action="" method="POST">
+                <div class="input-group">
+                    <label>Client Name</label>
+                    <input type="text" name="name" id="editName" class="form-input" required>
+                </div>
+                <div class="input-group">
+                    <label>Billing Email</label>
+                    <input type="email" name="email" id="editEmail" class="form-input" required>
+                </div>
+                <div class="form-inline">
+                    <div class="input-group">
+                        <label>Plan Tier</label>
+                        <select name="plan" id="editPlan" class="form-select">
+                            <option value="Basic">Basic Tier</option>
+                            <option value="Premium">Premium Tier</option>
+                            <option value="Enterprise">Enterprise Tier</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label>System Status</label>
+                        <select name="status" id="editStatus" class="form-select">
+                            <option value="Active">Active</option>
+                            <option value="Suspended">Suspended</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-inline">
+                    <div class="input-group">
+                        <label>Daily Limit (kWh)</label>
+                        <input type="number" name="limit_kwh" id="editLimit" class="form-input" required min="1">
+                    </div>
+                    <div class="input-group">
+                        <label>Current Usage (kWh)</label>
+                        <input type="number" name="usage_kwh" id="editUsage" class="form-input" required min="0">
+                    </div>
+                </div>
+                <button type="submit" class="btn-submit" style="margin-top: 10px;">Save Changes</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // --- 1. Client Table Search Filter ---
+    function filterClients() {
+        const query = document.getElementById('clientSearch').value.toLowerCase();
+        const rows = document.querySelectorAll('.client-row');
+        
+        rows.forEach(row => {
+            const name = row.querySelector('.client-name').textContent.toLowerCase();
+            const email = row.querySelector('.client-email').textContent.toLowerCase();
+            const plan = row.querySelector('.client-plan').textContent.toLowerCase();
+            
+            if (name.includes(query) || email.includes(query) || plan.includes(query)) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    }
+
+    // --- 2. Add Modal Handlers ---
+    function openAddModal() {
+        document.getElementById('addUserModal').classList.add('active');
+    }
+    function closeAddModal() {
+        document.getElementById('addUserModal').classList.remove('active');
+    }
+
+    // --- 3. Edit Modal Handlers ---
+    function openEditModal(id, name, email, plan, limit, usage, status) {
+        // Set Action URL
+        document.getElementById('editForm').action = '/admin/users/edit/' + id;
+        // Populate inputs
+        document.getElementById('editName').value = name;
+        document.getElementById('editEmail').value = email;
+        document.getElementById('editPlan').value = plan;
+        document.getElementById('editLimit').value = parseFloat(limit);
+        document.getElementById('editUsage').value = parseFloat(usage);
+        document.getElementById('editStatus').value = status;
+        // Open
+        document.getElementById('editUserModal').classList.add('active');
+    }
+    function closeEditModal() {
+        document.getElementById('editUserModal').classList.remove('active');
+    }
+
+    // Close modal on escape key or outer click
+    window.addEventListener('click', function(e) {
+        const addModal = document.getElementById('addUserModal');
+        const editModal = document.getElementById('editUserModal');
+        if (e.target === addModal) closeAddModal();
+        if (e.target === editModal) closeEditModal();
+    });
+</script>
+{% endblock %}
